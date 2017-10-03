@@ -74,7 +74,6 @@ sigma.classes.graph.addMethod('createSubgraphFromList', function(node_list) {
   return {"nodes": nodes, "links": links};
 });
 
-
 /**
   * @method
   * @description Returns the subgraph of a bounded search on a course.
@@ -160,7 +159,7 @@ const createLink = (source, target) => {
   * @method
   * @description Constructor function to create a Knowledge Graph. (Sigma graph of our courses).
   * @param {object} courses - Object that maps courseID's to course information. AKA our indexed-courses.json
-  * @returns {object} s - Returns a Sigma graph with all of the functions and methods in this file. 
+  * @returns {object} s - Returns a Sigma graph with all of the functions and methods in this file.
 */
 export const createSigmaGraph = (courses) => {
   var course, prev;
