@@ -2,6 +2,7 @@ import React            from 'react';
 import _                from 'lodash';
 
 import { loadAllData }  from './Utilities';
+import { setGraphState} from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
 import Sankey           from './components/sankey';
@@ -28,7 +29,7 @@ class App extends React.Component {
     };
 
     // Bind functions
-    this.setGraphState = this.setGraphState.bind(this);
+    this.setGraphState = setGraphState.bind(this);
 
     // Controller functions
     this.majorCallback = this.majorCallback.bind(this);
@@ -36,22 +37,14 @@ class App extends React.Component {
     this.departmentCallback = this.departmentCallback.bind(this);
   }
 
-    setGraphState(graph) {
-      this.setState({
-        nodes: graph.nodes,
-        links: graph.links
-      });
-    }
 
     // ========================================================================
     // Callback functions
     // ========================================================================
     majorCallback(event) {
       // err checking
-      let value = event.value;
-      console.log(event);
-
-      if (value) {
+      if (event) {
+        let value = event.value;
         let g = this.state.graph.graph;
         let major_ids = this.state.majors[value].courses.map(d => d.courseID);
         let major_graph = g.createSubgraphFromList(major_ids);

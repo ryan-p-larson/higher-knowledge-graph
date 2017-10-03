@@ -1,5 +1,6 @@
-import * as d3 from 'd3';
-import _ from 'lodash';
+import React    from 'react';
+import * as d3  from 'd3';
+import _        from 'lodash';
 
 import { createSigmaGraph } from './components/graph';
 
@@ -37,3 +38,10 @@ export const loadAllData = (callback = _.noop) => {
 
     });
 };
+
+export function setGraphState(graph) {
+    return this.setState({
+      nodes: graph.nodes,
+      links: graph.links
+    });
+}
