@@ -5,7 +5,8 @@ import _ from 'lodash';
 import { loadAllData } from './Utilities';
 import { createSigmaGraph } from './components/graph';
 import Dropdown from './components/toolbar/dropdown';
-import SankeyApp from './components/sankey';
+import Toolbar from './components/toolbar/toolbar';
+import Sankey from './components/sankey';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -45,7 +46,7 @@ class App extends React.Component {
     }
 
     // ========================================================================
-    // Add links
+    // Callback functions
     // ========================================================================
     majorCallback(event) {
       // err checking
@@ -71,7 +72,7 @@ class App extends React.Component {
         console.log(all_nodes, test_nodes, all_links, test_links);
         this.setGraphState(major_graph);
         //this.setGraphState({nodes: test_nodes, links: test_links});
-        
+
         // Set title of chart
         this.setState({title: event.label + " curriculum."});
       }
@@ -83,7 +84,7 @@ class App extends React.Component {
         let course_graph = this.state.graph.graph.createSubgraphFromSearch(value, 2);
         this.setGraphState(course_graph);
 
-        // Set title of chart 
+        // Set title of chart
         this.setState({title: event.label + "'s prequisites."});
       }
     }
@@ -96,7 +97,7 @@ class App extends React.Component {
 
       this.setGraphState(dept_graph);
 
-      // Set title of chart 
+      // Set title of chart
       this.setState({title: "All of " + event.label + " departmental courses."});
     }
 
@@ -104,10 +105,11 @@ class App extends React.Component {
 
 
   /**
-    * Component Lifecycle Methods
+    * @description On mounting, load all data and set our state.
+    * @returns Our Component's state will be initialized.
   */
   componentWillMount() { loadAllData(data => this.setState(data)); }
-  //shouldComponentMount() { return {this.state.courses} !== {}; }
+
 
   render() {
 
@@ -117,33 +119,15 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <div className="row">
-
-          <div className="col-xs-3">
-            <Dropdown 
-              data={this.state.major_dropdown_options} 
-              placeholder={"Major"}
-              callback={this.majorCallback}
-            />
-          </div>
-
-          <div className="col-xs-6">
-            <Dropdown 
-              data={this.state.course_dropdown_options} 
-              placeholder={"Course"}
-              callback={this.courseCallback}
-            />
-          </div>
-
-          <div className="col-xs-3">
-            <Dropdown 
-              data={this.state.department_dropdown_options} 
-              placeholder={"Department"}
-              callback={this.departmentCallback}
-            />
-          </div>
-
-        </div>
+        <Toolbar
+          course_dropdown_options={this.state.course_dropdown_options}
+          major_dropdown_options={this.state.major_dropdown_options}
+          department_dropdown_options={this.state.department_dropdown_options}
+          courseCallback={this.courseCallback}
+          majorCallback={this.majorCallback}
+          departmentCallback={this.departmentCallback}
+          title={this.state.title}
+        />
 
         <div className="row">
           <div className="col-xs-12">
@@ -155,7 +139,7 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col-xs-12">
-            <SankeyApp
+            <Sankey
               nodes={this.state.nodes}
               links={this.state.links}
               nodeCallback={this.courseCallback}
