@@ -4,15 +4,12 @@ import * as d3 from 'd3';
 import * as sankey from 'd3-sankey';
 import _ from 'lodash';
 
-//var d3 = require('d3');
-//var sankey = require('d3-sankey');
-
 export default class extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      nodes: [], 
+      nodes: [],
       links: []
     };
   }
@@ -24,8 +21,8 @@ export default class extends React.Component {
     });
   }
 
-  shouldComponentUpdate(nextProps) { 
-    return (nextProps.nodes !== undefined); 
+  shouldComponentUpdate(nextProps) {
+    return (nextProps.nodes !== undefined);
   }
 
   render() {
@@ -42,7 +39,7 @@ export default class extends React.Component {
     // ========================================================================
     // Set the sankey diagram properties
     // ========================================================================
-    
+
     var app = sankey.sankey()
         .nodeId(function(d) { return d.id; })
         .nodeAlign(sankey.sankeyCenter)
@@ -52,7 +49,7 @@ export default class extends React.Component {
       nodes: _.cloneDeep(this.state.nodes),
       links: _.cloneDeep(this.state.links)
     };
-    
+
     // Add weight to the links
     graph.links.forEach(d => {
       d['value'] = 1;
@@ -60,13 +57,13 @@ export default class extends React.Component {
       return d;
     });
 
-    //console.log(graph, this.state.nodes, this.state.links); 
-    
+    //console.log(graph, this.state.nodes, this.state.links);
+
     // ========================================================================
     // Initialize and append the svg canvas to faux-DOM
     // ========================================================================
     var svgNode = ReactFauxDOM.createElement('div');
-    
+
     var svg = d3.select(svgNode).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -78,19 +75,19 @@ export default class extends React.Component {
     // ========================================================================
     // Add links
     // ========================================================================
-    
-    
+
+
     if ((graph.nodes.length > 1) && (graph.links.length > 0)) {
-      
+
       var departments = graph.nodes.map(d => { return d.department; })
-        .filter(function(value, index, self) { 
+        .filter(function(value, index, self) {
             return self.indexOf(value) === index;
       });
       color_scale.domain(departments);
       y_scale.domain(d3.extent(graph.nodes, d => d.course_num));
 
       // Initialize links
-      app(graph); 
+      app(graph);
 
       // Manually adjust height
       /*
@@ -172,10 +169,10 @@ export default class extends React.Component {
     node.append('title')
       .text(d => d.name + '\n' + d.department);
     }
-    
-    
-    
-    // Above D3 manipaluation equal to following jsx if didn't rely on faux-dom 
+
+
+
+    // Above D3 manipaluation equal to following jsx if didn't rely on faux-dom
     // ------------------------------------------------------------------------
     // var links = graph.links.map((link, i) => {
     //   return (
@@ -193,7 +190,7 @@ export default class extends React.Component {
     //       <rect height={node.dy} width={sankey.nodeWidth()}>
     //         <title>{node.name + "\n" + format(node.value)}</title>
     //       </rect>
-    //       { (node.x >= width / 2) ? 
+    //       { (node.x >= width / 2) ?
     //         <text x={-6} y={node.dy / 2} dy={".35em"} textAnchor={"end"} >{node.name}</text> :
     //         <text x={6 + sankey.nodeWidth()} y={node.dy / 2} dy={".35em"} textAnchor={"start"} >{node.name}</text>
     //       }
