@@ -1,6 +1,5 @@
-import React    from 'react';
 import * as d3  from 'd3';
-import _        from 'lodash';
+import _            from 'lodash';
 
 import { createSigmaGraph } from './components/graph';
 
@@ -16,7 +15,7 @@ const mapSelectOptions = function(data, label, value) {
   // Filter out courses with no prereqs from being shown.
   if (data['ABRD:3010'] !== undefined) {
     var course;
-    var data = Object.assign({}, data);
+    data = Object.assign({}, data);
     for (course in data)
       if (data[course].before.length < 1) delete data[course];
   }

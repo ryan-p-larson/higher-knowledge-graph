@@ -20,14 +20,14 @@ sigma.classes.graph.addMethod('inNeighbors', function(nodeId) {
 
 /**
   * @method
-  * @description Adds a method to get ALL neighbors of a node.
+  * @description Adds a method to get out neighbors (antecedents) of a node.
   * @param {string} nodeID - node identifier
   * @returns {array} neighbors - list of node objects
   */
-sigma.classes.graph.addMethod('neighbors', function(nodeId) {
+sigma.classes.graph.addMethod('outNeighbors', function(nodeId) {
   var k,
       neighbors = [],
-      index = this.allNeighborsIndex[nodeId] || {};
+      index = this.outNeighborsIndex[nodeId] || {};
 
   for (k in index)
     neighbors.push(this.nodesIndex[k]);
@@ -119,9 +119,9 @@ sigma.classes.graph.addMethod('createSubgraphFromSearch', function(nodeID, depth
     depth = depth - 1;
   }
 
-  return {"nodes": nodes, "links": links};
-  //let temp_nodes = nodes.map(d => d.id);
-  //return this.createSubgraphFromList(temp_nodes);
+  //return {"nodes": nodes, "links": links};
+  let temp_nodes = nodes.map(d => d.id);
+  return this.createSubgraphFromList(temp_nodes);
 });
 
 /**
@@ -162,7 +162,7 @@ const createLink = (source, target) => {
   * @returns {object} s - Returns a Sigma graph with all of the functions and methods in this file.
 */
 export const createSigmaGraph = (courses) => {
-  var course, prev;
+  var course;
 
     // Dont clone so we can reference them and clone them later down the line
   let s = new sigma({
