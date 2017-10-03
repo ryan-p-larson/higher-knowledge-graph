@@ -101,12 +101,11 @@ class App extends React.Component {
   */
   componentWillMount() { loadAllData(data => this.setState(data)); }
 
-
   render() {
-
     return (
       <div className="App">
-
+        <hr/>
+        
         <Toolbar
           course_dropdown_options={this.state.course_dropdown_options}
           major_dropdown_options={this.state.major_dropdown_options}
