@@ -1,12 +1,10 @@
-import React from 'react';
-import * as d3 from 'd3';
-import _ from 'lodash';
+import React            from 'react';
+import _                from 'lodash';
 
-import { loadAllData } from './Utilities';
-import { createSigmaGraph } from './components/graph';
-import Dropdown from './components/toolbar/dropdown';
-import Toolbar from './components/toolbar/toolbar';
-import Sankey from './components/sankey';
+import { loadAllData }  from './Utilities';
+
+import Toolbar          from './components/toolbar/toolbar';
+import Sankey           from './components/sankey';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -112,9 +110,6 @@ class App extends React.Component {
 
 
   render() {
-
-    //if (this.state.major_dropdown_options.length > 1)
-      //console.log(this.state);
 
     return (
       <div className="App">
