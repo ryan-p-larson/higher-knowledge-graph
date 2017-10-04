@@ -100,8 +100,6 @@ sigma.classes.graph.addMethod('createSubgraphFromSearch', function(nodeID, depth
       nodes.push(current_node);
 
       // Gather neighbors
-      // DECISION
-      // DO WE WANT TO
       let node_neighbors = this.inNeighbors(current_id);
 
       // Add each to queue
@@ -119,9 +117,7 @@ sigma.classes.graph.addMethod('createSubgraphFromSearch', function(nodeID, depth
     depth = depth - 1;
   }
 
-  //return {"nodes": nodes, "links": links};
-  let temp_nodes = nodes.map(d => d.id);
-  return this.createSubgraphFromList(temp_nodes);
+  return {"nodes": nodes, "links": links};
 });
 
 /**

@@ -5,6 +5,7 @@ import { loadAllData }  from './Utilities';
 import { setGraphState} from './Utilities';
 import { courseCallback, majorCallback, deptCallback} from './Utilities';
 
+import Editbar           from './components/toolbar/editbar';
 import Toolbar          from './components/toolbar/toolbar';
 import Sankey          from './components/sankey';
 
@@ -50,6 +51,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Editbar
+          course_dropdown_options={this.state.course_dropdown_options}
+        />
+
+        <hr/>
+
         <Toolbar
           course_dropdown_options={this.state.course_dropdown_options}
           major_dropdown_options={this.state.major_dropdown_options}

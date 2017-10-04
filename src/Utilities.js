@@ -91,6 +91,7 @@ export function majorCallback(event) {
 
     let major_ids = this.state.majors[value].courses.map(d => d.courseID);
     let major_graph = g.createSubgraphFromList(major_ids);
+    // Set graph
     this.setGraphState(major_graph);
 
     // Set title of chart
@@ -113,6 +114,7 @@ export function deptCallback(event) {
     // Filter only departmental courses, create graph from them
     let dept_ids = this.state.graph.graph.filterBy('department', value).map(d => d.id);
     let dept_graph = this.state.graph.graph.createSubgraphFromList(dept_ids);
+    // Set graph
     this.setGraphState(dept_graph);
 
     // Set title of chart

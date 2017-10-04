@@ -10,19 +10,44 @@ export default class extends React.Component {
 
     this.state = {
       nodes: [],
-      links: []
+      links: [],
+      nodeCallback: {}
     };
+
+    // Bind functions
+    this.renderSuggestions = this.renderSuggestions.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       nodes: nextProps.nodes,
-      links: nextProps.links
+      links: nextProps.links,
+      nodeCallback: nextProps.nodeCallback
     });
   }
 
   shouldComponentUpdate(nextProps) {
     return (nextProps.nodes !== undefined);
+  }
+
+  renderSuggestions(svg) {
+    // Function to append suggestions when we error out and don't have any links
+    let major_sug = [
+      {label: "Applied Physics BS", value: "applied-physics-bs"},
+      {label: "Health Human Physiology BA", value: "health-human-physiology-ba"},
+      {label: "Statistics BS", value: "statistics-bs"}
+    ];
+
+    svg.selectAll('text')
+      .data(major_sug)
+      .enter()
+      .append('text')
+      .attr('x', 250)
+      .attr('y', (d, i) => i*20)
+      .text(d => "Click here to view " + d.label)
+      .on('click', d => console.log(d));
+
+    return svg;
   }
 
   render() {
@@ -168,6 +193,8 @@ export default class extends React.Component {
     // Add nodes title
     node.append('title')
       .text(d => d.name + '\n' + d.department);
+    } else {
+      svg = this.renderSuggestions(svg);
     }
 
 
