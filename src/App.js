@@ -62,11 +62,11 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col-xs-12">
-            <h4>{this.state.title}</h4>
+            <h4 className="chartTitle">{this.state.title}</h4>
           </div>
         </div>
 
-        <hr/>
+        <hr className="chartHR"/>
 
         <div className="row">
           <div className="col-xs-12">

@@ -1,11 +1,19 @@
-.App {
-
-}
-
+/* Give buttons more room horizontally */
 .btn {
   margin-right: 20px;
 }
 
+/* Decrease distance between title and chart. Make separation more distinct. */
+.chartTitle {
+  margin-bottom: 3px;
+  margin-top: 17px;
+}
+.chartHR {
+  margin-top: 10px;
+  border-top: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+/* Style dropdown menus */
 .Select-menu-outer {
   margin-top: 12px;
   padding: 8px 0;
@@ -16,7 +24,20 @@
 
   max-height: 400px;
 }
-
 .Select-menu {
   max-height: 398px;
+}
+
+/* Sankey Charting */
+.node rect {
+  shape-rendering: crispEdges;
+  fill-opacity: 0.7;
+}
+.node rect:hover {
+  cursor: pointer;
+  fill-opacity: 1
+}
+.link:hover {
+  cursor: pointer;
+  stroke-opacity: 0.4;
 }
