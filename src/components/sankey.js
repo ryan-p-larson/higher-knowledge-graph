@@ -4,6 +4,8 @@ import * as d3 from 'd3';
 import * as sankey from 'd3-sankey';
 import _ from 'lodash';
 
+import {legendColor} from 'd3-svg-legend';
+
 export default class extends React.Component {
   constructor() {
     super()
@@ -16,6 +18,7 @@ export default class extends React.Component {
 
     // Bind functions
     this.renderSuggestions = this.renderSuggestions.bind(this);
+    this.renderLegend = this.renderLegend.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,23 +41,46 @@ export default class extends React.Component {
       {label: "Statistics BS", value: "statistics-bs"}
     ];
 
-    svg.selectAll('text')
-      .data(major_sug)
-      .enter()
-      .append('text')
-      .attr('x', 250)
-      .attr('y', (d, i) => i*20)
-      .text(d => "Click here to view " + d.label)
-      .on('click', d => console.log(d));
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("font-family", "sans-serif")
+      .attr("font-size", 14)
+      .attr("x", 480)
+      .attr("y", 175)
+      .text("Sorry, there's no links for us to visualize.\nTry an option from the dropdown instead.");
 
     return svg;
+  }
+
+  renderLegend(color, svg) {
+    let legend = svg.append("g")
+        .attr("class", "legend")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+        .attr("text-anchor", "end")
+      .selectAll("g")
+      .data(color.domain().slice())
+      .enter().append("g")
+      .attr("transform", (d, i) => "translate(0," + (460 - (i*24)) + ")");
+
+    legend.append("rect")
+      .attr("x", 960 - 35)
+      .attr("width", 20)
+      .attr("height", 20)
+      .attr("fill", d => color(d));
+
+    legend.append("text")
+      .attr("x", 960 - 40)
+      .attr("y", 9.5)
+      .attr("dy", "0.32em")
+      .text(d => d);
   }
 
   render() {
     // ========================================================================
     // Set units, margin, sizes
     // ========================================================================
-    var margin = { top: 25, right: 15, bottom: 10, left: 15 };
+    var margin = { top: 10, right: 30, bottom: 10, left: 10 };
     var width = 960 - margin.left - margin.right;
     var height = 500 - margin.top - margin.bottom;
 
@@ -66,9 +92,9 @@ export default class extends React.Component {
     // ========================================================================
 
     var app = sankey.sankey()
-        .nodeId(function(d) { return d.id; })
-        .nodeAlign(sankey.sankeyCenter)
-        .size([width, height]);
+      .nodeId(function(d) { return d.id; })
+      .nodeAlign(sankey.sankeyCenter)
+      .size([width, height]);
 
     var graph = {
       nodes: _.cloneDeep(this.state.nodes),
@@ -82,8 +108,6 @@ export default class extends React.Component {
       return d;
     });
 
-    //console.log(graph, this.state.nodes, this.state.links);
-
     // ========================================================================
     // Initialize and append the svg canvas to faux-DOM
     // ========================================================================
@@ -95,7 +119,7 @@ export default class extends React.Component {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    if (graph.nodes.length === 0) return svgNode.toReact();
+    //if (graph.nodes.length === 0) return svgNode.toReact();
 
     // ========================================================================
     // Add links
@@ -104,15 +128,19 @@ export default class extends React.Component {
 
     if ((graph.nodes.length > 1) && (graph.links.length > 0)) {
 
-      var departments = graph.nodes.map(d => { return d.department; })
-        .filter(function(value, index, self) {
-            return self.indexOf(value) === index;
-      });
-      color_scale.domain(departments);
-      y_scale.domain(d3.extent(graph.nodes, d => d.course_num));
-
       // Initialize links
       app(graph);
+
+      // Get only active departments by filtering out singleton nodes...
+      // ... mapping to get only departments, and creating a set.
+      var departments = graph.nodes
+        .filter(d => d.sourceLinks.length > 0 || d.targetLinks.length > 0)
+        .map(d => { return d.department; })
+        .filter(function(value, index, self) { return self.indexOf(value) === index; });
+      // Set slimmed color scale domain
+      color_scale.domain(departments);
+      // Y scale set
+      y_scale.domain(d3.extent(graph.nodes, d => d.course_num));
 
       // Manually adjust height
       /*
@@ -135,64 +163,68 @@ export default class extends React.Component {
 
 
 
-    var link = svg.append("g")
-        .attr("class", "links")
-        .attr("fill", "none")
-        .attr("stroke", "#000")
-        .attr("stroke-opacity", 0.2)
-      .selectAll("path");
-    var node = svg.append("g")
-        .attr("class", "nodes")
-        .attr("font-family", "sans-serif")
-        .attr("font-size", 10)
-      .selectAll("g");
+      var link = svg.append("g")
+          .attr("class", "links")
+          .attr("fill", "none")
+          .attr("stroke", "#000")
+          .attr("stroke-opacity", 0.2)
+        .selectAll("path");
+      var node = svg.append("g")
+          .attr("class", "nodes")
+          .attr("font-family", "sans-serif")
+          .attr("font-size", 10)
+        .selectAll("g");
 
-    // add link titles
-    link = link
-        .data(graph.links)
-        .enter().append("path")
-        .attr("d", sankey.sankeyLinkHorizontal())
-        .attr('class', 'link')
-        .attr("stroke-width", function(d) { return Math.max(1, d.width); });
-    link.append("title")
-        .text(function(d) { return d.source.name + " → " + d.target.name; });
+      // add link titles
+      link = link
+          .data(graph.links)
+          .enter().append("path")
+          .attr("d", sankey.sankeyLinkHorizontal())
+          .attr('class', 'link')
+          .attr("stroke-width", function(d) { return Math.max(1, d.width) + "px"; });
+      link.append("title")
+          .text(function(d) { return d.source.name + " → " + d.target.name; });
 
-    // ========================================================================
-    // Add nodes
-    // ========================================================================
-    node = node
-        .data(graph.nodes)
-        .enter().append("g")
-        .filter(function(d) { return (d['targetLinks'].length > 0) || (d['sourceLinks'].length > 0); })
-        .attr('class', 'node');
+      // ========================================================================
+      // Add nodes
+      // ========================================================================
+      node = node
+          .data(graph.nodes)
+          .enter().append("g")
+          .filter(function(d) { return (d['targetLinks'].length > 0) || (d['sourceLinks'].length > 0); })
+          .attr('class', 'node');
 
-    // add nodes rect
-    node.append("rect")
-        .attr('id', d => { return d.id; })
-        .attr('class', 'node')
-        .attr("x", function(d) { return d.x0; })
-        .attr("y", function(d) { return d.y0; })
-        .attr("height", function(d) { return d.y1 - d.y0; })
-        .attr("width", function(d) { return d.x1 - d.x0; })
-        .attr("fill", function(d) { return color_scale(d.department); })
-        .attr("stroke", "#000")
-        .on('click', d => this.props.nodeCallback({value: d.id, label: d.name}));
+      // add nodes rect
+      node.append("rect")
+          .attr('id', d => { return d.id; })
+          .attr('class', 'node')
+          .attr("x", function(d) { return d.x0; })
+          .attr("y", function(d) { return d.y0; })
+          .attr("height", function(d) { return d.y1 - d.y0; })
+          .attr("width", function(d) { return d.x1 - d.x0; })
+          .attr("fill", function(d) { return color_scale(d.department); })
+          .attr("stroke", "#333");
+          //.on('click', d => this.props.nodeCallback({value: d.id, label: d.name}));
 
-    // add nodes text
-    node.append("text")
-        .attr("x", function(d) { return d.x0 - 6; })
-        .attr("y", function(d) { return (d.y1 + d.y0) / 2; })
-        .attr("dy", "0.35em")
-        .attr('class', 'courseName')
-        .attr("text-anchor", "end")
-        .text(function(d) { return d.name; })
-      .filter(function(d) { return d.x0 < width / 2; })
-        .attr("x", function(d) { return d.x1 + 6; })
-        .attr("text-anchor", "start");
+      // add nodes text
+      node.append("text")
+          .attr("x", function(d) { return d.x0 - 6; })
+          .attr("y", function(d) { return (d.y1 + d.y0) / 2; })
+          .attr("dy", "0.35em")
+          .attr('class', 'courseName')
+          .attr("text-anchor", "end")
+          .text(function(d) { return d.name; })
+        .filter(function(d) { return d.x0 < width / 2; })
+          .attr("x", function(d) { return d.x1 + 6; })
+          .attr("text-anchor", "start");
 
-    // Add nodes title
-    node.append('title')
-      .text(d => d.name + '\n' + d.department);
+      // Add nodes title
+      node.append('title')
+        .text(d => d.name + '\n' + d.department);
+
+      // render legend
+      this.renderLegend(color_scale, svg);
+
     } else {
       svg = this.renderSuggestions(svg);
     }
