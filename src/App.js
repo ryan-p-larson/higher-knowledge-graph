@@ -78,6 +78,7 @@ class App extends React.Component {
           </div>
         </div>
 
+        <hr className="chartTitle"/>
         <Png/>
 
       </div>
