@@ -1,22 +1,22 @@
 .App {
-  
+
 }
 
-.Select {
-     max-height: 500px;
+.btn {
+  margin-right: 20px;
 }
 
 .Select-menu-outer {
-    margin-top: 12px;
-    padding: 8px 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 12px;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
-    max-height: 500px;
+  max-height: 400px;
 }
 
 .Select-menu {
-    max-height: 498px !important;
+  max-height: 398px;
 }

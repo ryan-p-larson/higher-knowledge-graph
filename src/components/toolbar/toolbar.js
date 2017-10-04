@@ -1,7 +1,6 @@
-import React          from 'react';
-import Buttons      from './buttons';
-import Dropdown from './dropdown';
-import Toggle       from './toggle';
+import React     from 'react';
+import Buttons   from './buttons';
+import Dropdown  from './dropdown';
 
 export default class extends React.Component {
   constructor(props) {
@@ -66,16 +65,12 @@ export default class extends React.Component {
           handleButton={this.handleButton}
         />
 
-        <div className="col-xs-6">
+        <div className="col-xs-8">
           <Dropdown
             placeholder={dropdown_place}
             options={dropdown_options}
             callback={dropdown_fx}
           />
-        </div>
-
-        <div className="col-xs-2">
-          <button type="button" className="btn btn-outline-danger">X</button>
         </div>
       </div>
     );

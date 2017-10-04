@@ -12,7 +12,9 @@ export default class extends React.Component {
 
   createButton(d, active) {
     const style = (d) => (d === active) ? 'btn btn-primary' : 'btn btn-outline-secondary';
-    return <button key={d} value={d} type="button" className={style(d)} onClick={this.state.handleButton}>{d}</button>;
+    return (
+        <button key={d} value={d} type="radio" className={style(d)} onClick={this.state.handleButton}>{d}</button>
+    );
   }
 
   render() {
