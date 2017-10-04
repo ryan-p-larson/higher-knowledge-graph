@@ -2,6 +2,7 @@
   "name": "higher-knowledge",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ryan-p-larson.github.io/higher-knowledge-graph",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "d3": "^4.10.2",
@@ -23,5 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.0.0"
   }
 }
