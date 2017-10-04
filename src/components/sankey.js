@@ -4,8 +4,6 @@ import * as d3 from 'd3';
 import * as sankey from 'd3-sankey';
 import _ from 'lodash';
 
-import {legendColor} from 'd3-svg-legend';
-
 export default class extends React.Component {
   constructor() {
     super()
@@ -114,9 +112,10 @@ export default class extends React.Component {
     var svgNode = ReactFauxDOM.createElement('div');
 
     var svg = d3.select(svgNode).append("svg")
+      .attr("id", "sankeyChart")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
-      .append("g")
+        .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     //if (graph.nodes.length === 0) return svgNode.toReact();
