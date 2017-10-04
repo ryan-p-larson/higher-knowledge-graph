@@ -6,7 +6,7 @@ import { setGraphState} from './Utilities';
 import { courseCallback, majorCallback, deptCallback} from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
-import Sankey           from './components/sankey';
+import Sankey          from './components/sankey';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -41,11 +41,6 @@ class App extends React.Component {
   }
 
 
-
-
-
-
-
   /**
     * @description On mounting, load all data and set our state.
     * @returns Our Component's state will be initialized.
@@ -55,7 +50,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        
         <Toolbar
           course_dropdown_options={this.state.course_dropdown_options}
           major_dropdown_options={this.state.major_dropdown_options}
@@ -63,7 +57,6 @@ class App extends React.Component {
           courseCallback={this.courseCallback}
           majorCallback={this.majorCallback}
           deptCallback={this.deptCallback}
-          title={this.state.title}
         />
 
         <div className="row">
