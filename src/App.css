@@ -31,7 +31,6 @@
 /* Sankey Charting */
 .node rect {
   shape-rendering: crispEdges;
-  fill-opacity: 0.7;
 }
 .node rect:hover {
   cursor: pointer;

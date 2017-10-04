@@ -1,5 +1,4 @@
 import React            from 'react';
-import _                from 'lodash';
 
 import { loadAllData }  from './Utilities';
 import { setGraphState} from './Utilities';
@@ -62,7 +61,7 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col-xs-12">
-            <h4 className="chartTitle">{this.state.title}</h4>
+            <h5 className="chartTitle">{this.state.title}</h5>
           </div>
         </div>
 
