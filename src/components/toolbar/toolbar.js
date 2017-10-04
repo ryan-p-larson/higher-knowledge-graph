@@ -9,7 +9,7 @@ export default class extends React.Component {
           <Dropdown
             placeholder={"Department"}
             data={this.props.department_dropdown_options}
-            callback={this.props.departmentCallback}
+            callback={this.props.deptCallback}
           />
         </div>
 

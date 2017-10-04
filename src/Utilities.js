@@ -73,3 +73,70 @@ export function setGraphState(graph) {
       links: graph.links
     });
 }
+
+// ========================================================================
+// Callback functions
+// =======================================================================
+/**
+  * @method
+  * @description Function to handle a major being selected.
+  * @param {event} onChange event from our dropdown.
+  * @returns Our react App state updated with nodes, links, and title
+  */    
+export function majorCallback(event) {
+  // err checking
+  if (event) {
+    let value = event.value;
+    let g = this.state.graph.graph;
+
+    let major_ids = this.state.majors[value].courses.map(d => d.courseID);
+    let major_graph = g.createSubgraphFromList(major_ids);
+    this.setGraphState(major_graph);
+
+    // Set title of chart
+    this.setState({title: event.label + " curriculum."});
+  } else {
+    // handle invalid events here
+    console.log(event);
+  }
+}
+
+/**
+  * @method
+  * @description Function to handle a department being selected.
+  * @param {event} onChange event from our dropdown.
+  * @returns Our react App state updated with nodes, links, and title
+  */
+export function deptCallback(event) {
+  if (event) {
+    let value = event.value;
+    // Filter only departmental courses, create graph from them
+    let dept_ids = this.state.graph.graph.filterBy('department', value).map(d => d.id);
+    let dept_graph = this.state.graph.graph.createSubgraphFromList(dept_ids);
+    this.setGraphState(dept_graph);
+
+    // Set title of chart
+    this.setState({title: "All of " + event.label + " departmental courses."});
+  } else {
+    console.log(event);
+  }
+}
+
+/**
+  * @method
+  * @description Function to handle a course being selected.
+  * @param {event} onChange event from our dropdown.
+  * @returns Our react App state updated with nodes, links, and title
+  */
+export function courseCallback(event) {
+  if (event) {
+    let value = event.value;
+    let course_graph = this.state.graph.graph.createSubgraphFromSearch(value, 2);
+    this.setGraphState(course_graph);
+
+    // Set title of chart
+    this.setState({title: event.label + "'s prequisites."});
+  } else {
+    console.log(event);
+  }
+}
