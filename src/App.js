@@ -6,6 +6,7 @@ import { courseCallback, majorCallback, deptCallback} from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
 import Sankey           from './components/sankey';
+import Png              from './components/toolbar/png';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -76,6 +77,8 @@ class App extends React.Component {
             />
           </div>
         </div>
+
+        <Png/>
 
       </div>
     );
