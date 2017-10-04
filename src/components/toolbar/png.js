@@ -7,7 +7,7 @@ export default class extends React.Component {
     return (
         <div className="row">
           <div className="col-xs-12">
-            <a href="#" className="pull-right btn btn-primary btn-success">
+            <a href="#" className="pull-right btn btn-primary btn-success btn-sm">
               <span className="glyphicon glyphicon-cloud-download"></span> Download Image
             </a>
           </div>
