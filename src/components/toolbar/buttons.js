@@ -2,30 +2,21 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default class extends React.Component {
-  constructor() {
-    super();
-    this.state = {active: "Department"};
+  constructor(props) {
+    super(props);
+    this.state = {handleButton: props.handleButton};
 
-    // undefined functions
+    // Bind functions
     this.createButton = this.createButton.bind(this);
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({
-      active: props.active,
-      handleToggle: props.handleToggle
-    });
-  }
-
-  createButton(d) {
-    var highlight = this.state.active === d.text;
-    var style = (highlight) ? 'btn btn-primary' : 'btn btn-outline-secondary';
-    return <button key={d.text} value={d.text} type="button" className={style} onClick={this.state.handleToggle}>{d.text}</button>;
+  createButton(d, active) {
+    const style = (d) => (d === active) ? 'btn btn-primary' : 'btn btn-outline-secondary';
+    return <button key={d} value={d} type="button" className={style(d)} onClick={this.state.handleButton}>{d}</button>;
   }
 
   render() {
-    let buttons = [{text: "Department"}, {text: "Major"}, {text: "Course"}]
-      .map(d => this.createButton(d));
+    let buttons = ["Department", "Major", "Course"].map(d => this.createButton(d, this.props.active));
     return (
         <div className="col-xs-4 text-center">
             {buttons}

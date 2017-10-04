@@ -1,15 +1,16 @@
-import React        from 'react';
+import React          from 'react';
 import Buttons      from './buttons';
 import Dropdown from './dropdown';
+import Toggle       from './toggle';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dropdowns: {
-        "Department": props.department_dropdown_options,
-        "Major": props.major_dropdown_options,
-        "Course": props.course_dropdown_options
+        "Department": [],
+        "Major": [],
+        "Course": []
       },
       callbacks: {
         "Department": props.deptCallback,
@@ -19,7 +20,7 @@ export default class extends React.Component {
       placeholders: {
         "Department": "CS, FIN, and PSY are good places to start.",
         "Major": "Try 'Applied Physics' or 'Health Human Physiology'",
-        "Couse": "'Sociology Capstone', 'Distributed Algorithms', ..."
+        "Course": "'Sociology Capstone', 'Distributed Algorithms', ..."
       },
 
       active: "Department",
@@ -27,16 +28,13 @@ export default class extends React.Component {
     },
 
     // Bind functions
-    this.handleToggle = this.handleToggle.bind(this);
+    this.handleButton = this.handleButton.bind(this);
   }
 
-  handleToggle(event) {
+  handleButton(event) {
     if (event) {
       let value = event.target.value;
-      this.setState({
-        active: value,
-      });
-      this.render();
+      this.setState({active: value});
     }
   }
 
@@ -50,19 +48,7 @@ export default class extends React.Component {
         "Department": props.department_dropdown_options,
         "Major": props.major_dropdown_options,
         "Course": props.course_dropdown_options
-      },
-      callbacks: {
-        "Department": props.deptCallback,
-        "Major": props.majorCallback,
-        "Course": props.courseCallback
-      },
-      placeholders: {
-        "Department": "CS, FIN, and PSY are good places to start.",
-        "Major": "Try 'Applied Physics' or 'Health Human Physiology'",
-        "Couse": "'Sociology Capstone', 'Distributed Algorithms', ..."
-      },
-
-      fx: props.deptCallback
+      }
     });
   }
 
@@ -70,19 +56,19 @@ export default class extends React.Component {
     let selected = this.state.active;
     let dropdown_options = this.state.dropdowns[selected];
     let dropdown_fx = this.state.callbacks[selected];
-    let dropdown_place = this.state.callbacks[selected];
+    let dropdown_place = this.state.placeholders[selected];
 
     return (
       <div className="row">
 
         <Buttons
           active={this.state.active}
-          handleToggle={this.handleToggle}
+          handleButton={this.handleButton}
         />
 
         <div className="col-xs-6">
           <Dropdown
-            searchPromptText={dropdown_place}
+            placeholder={dropdown_place}
             options={dropdown_options}
             callback={dropdown_fx}
           />
