@@ -1,5 +1,5 @@
 import * as d3  from 'd3';
-import _            from 'lodash';
+import _        from 'lodash';
 
 import { createSigmaGraph } from './components/graph';
 
@@ -74,15 +74,15 @@ export function setGraphState(graph) {
     });
 }
 
-// ========================================================================
+// =============================================================================
 // Callback functions
-// =======================================================================
+// =============================================================================
 /**
   * @method
   * @description Function to handle a major being selected.
   * @param {event} onChange event from our dropdown.
   * @returns Our react App state updated with nodes, links, and title
-  */    
+  */
 export function majorCallback(event) {
   // err checking
   if (event) {
