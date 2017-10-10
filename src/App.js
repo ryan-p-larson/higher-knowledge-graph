@@ -2,11 +2,12 @@ import React            from 'react';
 
 import { loadAllData }  from './Utilities';
 import { setGraphState} from './Utilities';
-import { courseCallback, majorCallback, deptCallback} from './Utilities';
+import { courseCallback, majorCallback, deptCallback } from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
 import Sankey           from './components/sankey';
 import Png              from './components/toolbar/png';
+import Prompt           from './components/chart/prompts';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -48,6 +49,8 @@ class App extends React.Component {
   componentWillMount() { loadAllData(data => this.setState(data)); }
 
   render() {
+    console.log(this.state);
+
     return (
       <div className="App">
 
@@ -70,15 +73,23 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col-xs-12">
-            <Sankey
-              nodes={this.state.nodes}
-              links={this.state.links}
-              nodeCallback={this.courseCallback}
-            />
+            {(this.state.links.length > 0) ?
+              <Sankey
+                nodes={this.state.nodes}
+                links={this.state.links}
+                nodeCallback={this.courseCallback}
+              />
+              :
+              <Prompt
+                courseCallback={this.courseCallback}
+                majorCallback={this.majorCallback}
+                deptCallback={this.deptCallback}
+              />
+            }
           </div>
         </div>
 
-        <hr className="chartTitle"/>
+        <hr className="chartHR"/>
         <Png/>
 
       </div>

@@ -40,3 +40,10 @@
   cursor: pointer;
   stroke-opacity: 0.4;
 }
+
+/* Suggestion button prompts */
+.suggestionButtons {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
