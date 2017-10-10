@@ -49,6 +49,9 @@ export default class extends React.Component {
     * @returns Div containing only the dropdown and it's options.
     */
   render() {
+    // custom arrows for search bar
+    let custom_arrow = () => <span className="glyphicon glyphicon-search"></span>;
+
     return (
       <Select
         name="searchbar"
@@ -59,8 +62,8 @@ export default class extends React.Component {
         value={this.props.value}
         resetValue={this.props.value}
         placeholder={this.props.placeholder}
-
         onChange={this.props.callback}
+        arrowRenderer={custom_arrow}
       />
       );
   }
