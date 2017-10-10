@@ -36,8 +36,10 @@ export default class extends React.Component {
   render() {
     let buttons = ["Department", "Major", "Course"].map(d => this.createButton(d, this.props.active));
     return (
-        <div className="col-xs-4 text-center pull-left">
+        <div className="col-xs-4">
+          <div className="btn-group text-center pull-left" role="group" aria-label="Data views">
             {buttons}
+          </div>
         </div>
       );
   }

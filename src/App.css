@@ -1,6 +1,8 @@
 /* Give buttons more room horizontally */
 .btn {
-  margin-right: 20px;
+  /* margin-right: 20px; */
+  padding-left: 17px;
+  padding-right: 17px;
 }
 
 /* Decrease distance between title and chart. Make separation more distinct. */
