@@ -28,7 +28,7 @@ export default class extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return (nextProps.nodes !== undefined);
+    return nextProps.nodes !== undefined;
   }
 
   renderSuggestions(svg) {
@@ -95,8 +95,8 @@ export default class extends React.Component {
       .size([width, height]);
 
     var graph = {
-      nodes: _.cloneDeep(this.state.nodes),
-      links: _.cloneDeep(this.state.links)
+      nodes: _.cloneDeep(this.props.nodes),
+      links: _.cloneDeep(this.props.links)
     };
 
     // Add weight to the links
