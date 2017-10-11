@@ -24,9 +24,8 @@ export default class extends React.Component {
     */
   createButton(d, active) {
     const style = (d) => {
-      let btn_base = 'pull-left btn ';
       let btn_style = (d === active) ? 'btn-primary' : 'btn-outline-secondary';
-      return btn_base + btn_style;
+      return  'btn ' + btn_style + ' viewBtn';
     }
     return (
         <button key={d} value={d} type="radio" className={style(d)} onClick={this.state.handleButton}>{d}</button>
