@@ -5,8 +5,7 @@ import { setGraphState, clearChartState } from './Utilities';
 import { courseCallback, majorCallback, deptCallback } from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
-import Sankey           from './components/sankey';
-import Prompt           from './components/chart/prompts';
+import Chart              from './components/chart/chart';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -18,8 +17,7 @@ class App extends React.Component {
 
     this.state = {
       view: 'Load',
-      title: "No courses displayed",
-      active: '',
+      active: 'Select an option from the dropdown.',
 
       graph: {},
 
@@ -75,23 +73,13 @@ class App extends React.Component {
 
         <hr className="chartHR"/>
 
-        <div className="row">
-          <div className="col-xs-12">
-            {(this.state.links.length > 0) ?
-              <Sankey
-                nodes={this.state.nodes}
-                links={this.state.links}
-                nodeCallback={this.courseCallback}
-              />
-              :
-              <Prompt
-                courseCallback={this.courseCallback}
-                majorCallback={this.majorCallback}
-                deptCallback={this.deptCallback}
-              />
-            }
-          </div>
-        </div>
+        <Chart
+          nodes={this.state.nodes}
+          links={this.state.links}
+          courseCallback={this.courseCallback}
+          majorCallback={this.majorCallback}
+          deptCallback={this.deptCallback}
+        />
 
         <hr className="chartHR"/>
 
