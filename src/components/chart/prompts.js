@@ -59,7 +59,7 @@ export default class extends React.Component {
         "Major": "list-group-item-success",
         "Course": "list-group-item-info"
       };
-      return "chartPrompt list-group-item list-group-item-action " + button_color[v];
+      return "list-group-item list-group-item-action " + button_color[v];
     };
 
     return (
@@ -111,7 +111,7 @@ export default class extends React.Component {
     return (
         <div className="row promptRow">
             {(this.props.view !== 'Load') && this.createPrompt(this.props.active, this.props.view)}
-            <div className="promptButtons">
+            <div className="promptButtons mt-auto p-2">
               {this.createColumn(dept_suggests, 'Department')}
               {this.createColumn(maj_suggests, 'Major')}
               {this.createColumn(course_suggests, 'Course')}
