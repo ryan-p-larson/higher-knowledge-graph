@@ -30,6 +30,11 @@
   max-height: 398px;
 }
 
+/* Clear chart button */
+.clearButton {
+  color: #d9534f;
+}
+
 /* Sankey Charting */
 .node rect {
   shape-rendering: crispEdges;

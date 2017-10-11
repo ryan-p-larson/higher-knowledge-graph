@@ -5,8 +5,8 @@ export default class extends React.Component {
 
   render() {
     return (
-        <a className="btn btn-default" onClick={this.props.clearCallback}>
-          <span className="glyphicon glyphicon-remove"></span>
+        <a className="btn btn-default" title="Clear courses from chart." onClick={this.props.clearCallback}>
+          <span className="glyphicon glyphicon-remove clearButton"></span>
         </a>
       );
   }
