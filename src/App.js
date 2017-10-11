@@ -6,7 +6,6 @@ import { courseCallback, majorCallback, deptCallback } from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
 import Sankey           from './components/sankey';
-import Png              from './components/toolbar/png';
 import Prompt           from './components/chart/prompts';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -94,7 +93,6 @@ class App extends React.Component {
         </div>
 
         <hr className="chartHR"/>
-        <Png/>
 
       </div>
     );
