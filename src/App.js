@@ -6,6 +6,7 @@ import { courseCallback, majorCallback, deptCallback } from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
 import Chart              from './components/chart/chart';
+import SavePNG from './components/bottombar/png';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -84,6 +85,7 @@ class App extends React.Component {
         />
 
         <hr className="chartHR"/>
+        <SavePNG active={this.state.active} />
 
       </div>
     );
