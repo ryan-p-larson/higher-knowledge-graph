@@ -35,13 +35,13 @@ class App extends React.Component {
 
     // Bind functions
     this.setGraphState = setGraphState.bind(this);
-    this.clearChartState = clearChartState.bind(this);
     this.setChartTitle = setChartTitle.bind(this);
 
     // Controller functions
     this.majorCallback = majorCallback.bind(this);
     this.courseCallback = courseCallback.bind(this);
     this.deptCallback = deptCallback.bind(this);
+    this.clearCallback = clearChartState.bind(this);
   }
 
 
@@ -62,6 +62,7 @@ class App extends React.Component {
           courseCallback={this.courseCallback}
           majorCallback={this.majorCallback}
           deptCallback={this.deptCallback}
+          clearCallback={this.clearCallback}
         />
 
         <div className="row">

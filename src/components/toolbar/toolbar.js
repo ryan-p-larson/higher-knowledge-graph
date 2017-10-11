@@ -1,6 +1,7 @@
 import React     from 'react';
 import Buttons   from './buttons';
 import Dropdown  from './dropdown';
+import Clear      from './clear';
 
 /**
   * @class
@@ -19,7 +20,8 @@ export default class extends React.Component {
       callbacks: {
         "Department": props.deptCallback,
         "Major": props.majorCallback,
-        "Course": props.courseCallback
+        "Course": props.courseCallback,
+        "Clear": props.clearCallback
       },
       placeholders: {
         "Department": "CS, FIN, and PSY are good places to start.",
@@ -88,12 +90,16 @@ export default class extends React.Component {
           handleButton={this.handleButton}
         />
 
-        <div className="col-xs-8">
+        <div className="col-xs-7">
           <Dropdown
             placeholder={dropdown_place}
             options={dropdown_options}
             callback={dropdown_fx}
           />
+        </div>
+
+        <div className="col-xs-1">
+          <Clear clearCallback={this.state.callbacks.Clear}/>
         </div>
       </div>
     );
