@@ -86,11 +86,32 @@ export function setGraphState(graph) {
   * @returns Sets our React App's nodes and links to empty.
   */
 export function clearChartState() {
-    return this.setState({
-      nodes: [],
-      links: [],
-      curriculum: []
-    });
+  return this.setState({
+    nodes: [],
+    links: [],
+    curriculum: []
+  });
+}
+
+/**
+  * @method
+  * @param {string} label - Formatted label of data
+  * @param {string} view - Type of data view ('department', 'major', 'course', ...)
+  * @returns {string} subheading - Formatted title of the chart.
+  */
+export function setChartTitle(label, view) {
+  switch(view) {
+    case 'Load':
+      return label;
+    case 'Department':
+      return 'All ' + label + ' departmental courses.';
+    case 'Major':
+      return label + ' curriculum.';
+    case 'Course':
+      return label + "'s prequisites.";
+    default:
+      return null;
+  }
 }
 
 // =============================================================================
@@ -113,8 +134,11 @@ export function majorCallback(event) {
     // Set graph
     this.setGraphState(major_graph);
 
-    // Set title of chart
-    this.setState({title: event.label + " curriculum."});
+    // Set title of chart and view
+    this.setState({
+      active: event.label,
+      view: 'Major'
+    });
   } else {
     // handle invalid events here
     console.log(event);
@@ -136,8 +160,11 @@ export function deptCallback(event) {
     // Set graph
     this.setGraphState(dept_graph);
 
-    // Set title of chart
-    this.setState({title: "All of " + event.label + " departmental courses."});
+    // Set title of chart and view
+    this.setState({
+      active: event.label,
+      view: 'Department'
+    });
   } else {
     console.log(event);
   }
@@ -155,8 +182,11 @@ export function courseCallback(event) {
     let course_graph = this.state.graph.graph.createSubgraphFromSearch(value, 2);
     this.setGraphState(course_graph);
 
-    // Set title of chart
-    this.setState({title: event.label + "'s prequisites."});
+    // Set title of chart and view
+    this.setState({
+      active: event.label,
+      view: 'Course'
+    });
   } else {
     console.log(event);
   }

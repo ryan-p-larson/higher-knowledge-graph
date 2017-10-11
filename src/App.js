@@ -1,7 +1,7 @@
 import React            from 'react';
 
-import { loadAllData }  from './Utilities';
-import { setGraphState} from './Utilities';
+import { loadAllData, setChartTitle }  from './Utilities';
+import { setGraphState, clearChartState } from './Utilities';
 import { courseCallback, majorCallback, deptCallback } from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
@@ -18,22 +18,26 @@ class App extends React.Component {
     super()
 
     this.state = {
-      graph: {},
-      majors: {},
+      view: 'Load',
+      title: "No courses displayed",
+      active: '',
 
+      graph: {},
+
+      majors: {},
       major_dropdown_options: [],
       course_dropdown_options: [],
       department_dropdown_options: [],
 
-      title: "No courses displayed",
       nodes: [],
       links: [],
-
       curriculum: []
     };
 
     // Bind functions
     this.setGraphState = setGraphState.bind(this);
+    this.clearChartState = clearChartState.bind(this);
+    this.setChartTitle = setChartTitle.bind(this);
 
     // Controller functions
     this.majorCallback = majorCallback.bind(this);
@@ -49,8 +53,6 @@ class App extends React.Component {
   componentWillMount() { loadAllData(data => this.setState(data)); }
 
   render() {
-    console.log(this.state);
-
     return (
       <div className="App">
 
@@ -65,7 +67,9 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col-xs-12">
-            <h5 className="chartTitle">{this.state.title}</h5>
+              <h5 className="chartTitle">
+                {this.setChartTitle(this.state.active, this.state.view)}
+              </h5>
           </div>
         </div>
 
