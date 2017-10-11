@@ -34,18 +34,11 @@
   border-top: 1px solid rgba(128, 128, 128, 0.5);
 }
 
-/* Chart prompt container */
+/* Chart prompt container. All content should be centered horizontally */
 .promptRow {
   height: 500px;
-}
-
-/* A little eye candy to ease prompt rendering */
-.chartPrompt {
-  opacity: 1;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: opacity 0.5s;
+  display: flex;
+  justify-content: center;
 }
 
 /* Prompt text, 'Sorry it broke...' */
@@ -53,7 +46,7 @@
   margin-top: 100px;
 }
 
-/* Suggestion button prompts */
+/* Suggestion button prompts should be vertically aligned */
 .promptButtons {
   min-height: 350px;
   display: flex;
