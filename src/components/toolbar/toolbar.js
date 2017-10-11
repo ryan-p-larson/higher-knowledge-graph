@@ -11,6 +11,7 @@ import Clear      from './clear';
 export default class extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       dropdowns: {
         "Department": [],
@@ -31,7 +32,7 @@ export default class extends React.Component {
 
       active: "Department",
       fx: props.deptCallback
-    },
+    }
 
     // Bind functions
     this.handleButton = this.handleButton.bind(this);

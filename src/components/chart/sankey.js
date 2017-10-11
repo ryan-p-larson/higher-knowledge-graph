@@ -15,7 +15,6 @@ export default class extends React.Component {
     };
 
     // Bind functions
-    this.renderSuggestions = this.renderSuggestions.bind(this);
     this.renderLegend = this.renderLegend.bind(this);
   }
 
@@ -29,25 +28,6 @@ export default class extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.nodes !== undefined;
-  }
-
-  renderSuggestions(svg) {
-    // Function to append suggestions when we error out and don't have any links
-    let major_sug = [
-      {label: "Applied Physics BS", value: "applied-physics-bs"},
-      {label: "Health Human Physiology BA", value: "health-human-physiology-ba"},
-      {label: "Statistics BS", value: "statistics-bs"}
-    ];
-
-    svg.append("text")
-      .attr("text-anchor", "middle")
-      .attr("font-family", "sans-serif")
-      .attr("font-size", 14)
-      .attr("x", 480)
-      .attr("y", 175)
-      .text("Sorry, there's no links for us to visualize.\nTry an option from the dropdown instead.");
-
-    return svg;
   }
 
   renderLegend(color, svg) {
@@ -224,12 +204,7 @@ export default class extends React.Component {
       // render legend
       this.renderLegend(color_scale, svg);
 
-    } else {
-      svg = this.renderSuggestions(svg);
     }
-
-
-
     // Above D3 manipaluation equal to following jsx if didn't rely on faux-dom
     // ------------------------------------------------------------------------
     // var links = graph.links.map((link, i) => {

@@ -64,7 +64,6 @@ export default class extends React.Component {
 
     return (
         <button
-          role="button"
           key={d.key}
           value={d.value}
           className={style(view)}
