@@ -1,18 +1,7 @@
 /* Give buttons more room horizontally */
 .viewBtn {
-  /* margin-right: 20px; */
   padding-left: 17px;
   padding-right: 17px;
-}
-
-/* Decrease distance between title and chart. Make separation more distinct. */
-.chartTitle {
-  margin-bottom: 3px;
-  margin-top: 17px;
-}
-.chartHR {
-  margin-top: 10px;
-  border-top: 1px solid rgba(128, 128, 128, 0.5);
 }
 
 /* Style dropdown menus */
@@ -35,6 +24,33 @@
   color: #d9534f;
 }
 
+/* Decrease distance between title and chart. Make separation more distinct. */
+.chartTitle {
+  margin-bottom: 3px;
+  margin-top: 17px;
+}
+.chartHR {
+  margin-top: 10px;
+  border-top: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+/* Chart prompt container */
+.promptRow {
+  height: 500px;
+}
+
+/* Prompt text, 'Sorry it broke...' */
+.chartPrompt {
+  margin-top: 100px;
+}
+
+/* Suggestion button prompts */
+.promptButtons {
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+}
+
 /* Sankey Charting */
 .node rect {
   shape-rendering: crispEdges;
@@ -46,11 +62,4 @@
 .link:hover {
   cursor: pointer;
   stroke-opacity: 0.4;
-}
-
-/* Suggestion button prompts */
-.suggestionButtons {
-  min-height: 500px;
-  display: flex;
-  align-items: center;
 }

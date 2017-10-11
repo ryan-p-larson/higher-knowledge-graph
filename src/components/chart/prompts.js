@@ -17,8 +17,26 @@ export default class extends React.Component {
     };
 
     // Bind functions
+    this.createPrompt = this.createPrompt.bind(this);
     this.createButton = this.createButton.bind(this);
     this.createColumn = this.createColumn.bind(this);
+  }
+
+  /**
+    * @method
+    * @description Creates an prompt for the empty chart.
+    * @param {string} label - Formatted label of data slice.
+    * @param {string} view - String describing the view users are coming from.
+    * @returns {HTML} A html div containing the custom, formatted prompt.
+    */
+  createPrompt(label, view) {
+    let output = '';
+    
+    return (
+      <div className="chartPrompt text-center">
+        <p>{label}</p>
+      </div>
+    );
   }
 
   /**
@@ -90,10 +108,13 @@ export default class extends React.Component {
     ];
 
     return (
-        <div className="row suggestionButtons">
-          {this.createColumn(dept_suggests, 'Department')}
-          {this.createColumn(maj_suggests, 'Major')}
-          {this.createColumn(course_suggests, 'Course')}
+        <div className="row promptRow">
+            {this.createPrompt(this.props.active, this.props.view)}
+            <div className="promptButtons">
+              {this.createColumn(dept_suggests, 'Department')}
+              {this.createColumn(maj_suggests, 'Major')}
+              {this.createColumn(course_suggests, 'Course')}
+            </div>
         </div>
       );
   }

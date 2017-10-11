@@ -18,6 +18,8 @@ export default class extends React.Component {
               />
               :
               <Prompt
+                active={this.props.active}
+                view={this.props.view}
                 courseCallback={this.props.courseCallback}
                 majorCallback={this.props.majorCallback}
                 deptCallback={this.props.deptCallback}
