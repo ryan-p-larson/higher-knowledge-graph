@@ -1,5 +1,5 @@
 import React      from 'react';
-import Sankey   from './sankey';
+import Sankey  from './sankeyChart';
 import Prompt   from './prompts';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -23,7 +23,6 @@ export default class extends React.Component {
               <Sankey
                 nodes={this.props.nodes}
                 links={this.props.links}
-                nodeCallback={this.props.courseCallback}
               />
               :
               <Prompt
