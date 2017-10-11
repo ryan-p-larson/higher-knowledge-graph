@@ -89,7 +89,8 @@ export function clearChartState() {
   return this.setState({
     nodes: [],
     links: [],
-    curriculum: []
+    view: 'Load',
+    active: 'Select an option from the dropdown.'
   });
 }
 
