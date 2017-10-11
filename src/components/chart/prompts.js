@@ -30,11 +30,13 @@ export default class extends React.Component {
     * @returns {HTML} A html div containing the custom, formatted prompt.
     */
   createPrompt(label, view) {
-    let output = '';
-    
+    let base = <p>Unfortunately, <i>{label}</i> has no prerequisite connections within its course curriculum</p>;
+    let tail = <p>Try selecting an option from below or searching in the dropdown.</p>;
+
     return (
-      <div className="chartPrompt text-center">
-        <p>{label}</p>
+      <div className="chartPrompt alert alert-danger alert-dismissable text-center">
+        {base}
+        {tail}
       </div>
     );
   }
@@ -53,8 +55,8 @@ export default class extends React.Component {
     // Short lambda to assign style
     const style = (v) => {
       let button_color = {
-        "Department": "list-group-item-success",
-        "Major": "list-group-item-warning",
+        "Department": "list-group-item-warning",
+        "Major": "list-group-item-success",
         "Course": "list-group-item-info"
       };
       return "list-group-item list-group-item-action " + button_color[v];
@@ -109,7 +111,7 @@ export default class extends React.Component {
 
     return (
         <div className="row promptRow">
-            {this.createPrompt(this.props.active, this.props.view)}
+            {(this.props.view !== 'Load') && this.createPrompt(this.props.active, this.props.view)}
             <div className="promptButtons">
               {this.createColumn(dept_suggests, 'Department')}
               {this.createColumn(maj_suggests, 'Major')}

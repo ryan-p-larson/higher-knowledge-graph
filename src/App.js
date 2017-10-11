@@ -74,6 +74,8 @@ class App extends React.Component {
         <hr className="chartHR"/>
 
         <Chart
+          view={this.state.view}
+          active={this.state.active}
           nodes={this.state.nodes}
           links={this.state.links}
           courseCallback={this.courseCallback}
