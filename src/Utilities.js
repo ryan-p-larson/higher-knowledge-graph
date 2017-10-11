@@ -3,6 +3,9 @@ import _        from 'lodash';
 
 import { createSigmaGraph } from './components/graph';
 
+// =============================================================================
+// Data Loading functions
+// =============================================================================
 /**
   * @method
   * @description Function to create dropdown options from an array of objects
@@ -59,6 +62,9 @@ export const loadAllData = (callback = _.noop) => {
     });
 };
 
+// =============================================================================
+// App functions
+// =============================================================================
 /**
   * @method
   * @description Syntactic sugar to set our App's state from a subgraph.
@@ -71,6 +77,19 @@ export function setGraphState(graph) {
     return this.setState({
       nodes: graph.nodes,
       links: graph.links
+    });
+}
+
+/**
+  * @method
+  * @description Syntactic sugar to clear our App's chart.
+  * @returns Sets our React App's nodes and links to empty.
+  */
+export function clearChartState() {
+    return this.setState({
+      nodes: [],
+      links: [],
+      curriculum: []
     });
 }
 
