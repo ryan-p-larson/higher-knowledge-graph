@@ -39,8 +39,17 @@
   height: 500px;
 }
 
-/* Prompt text, 'Sorry it broke...' */
+/* A little eye candy to ease prompt rendering */
 .chartPrompt {
+  opacity: 1;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: opacity 0.5s;
+}
+
+/* Prompt text, 'Sorry it broke...' */
+.chartPrompt h5 {
   margin-top: 100px;
 }
 

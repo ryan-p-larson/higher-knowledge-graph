@@ -59,7 +59,7 @@ export default class extends React.Component {
         "Major": "list-group-item-success",
         "Course": "list-group-item-info"
       };
-      return "list-group-item list-group-item-action " + button_color[v];
+      return "chartPrompt list-group-item list-group-item-action " + button_color[v];
     };
 
     return (
@@ -101,7 +101,7 @@ export default class extends React.Component {
     let maj_suggests = [
       {label: "Applied Physics", value: "applied-physics-bs", key: 0},
       {label: "Health & Human Physiology", value: "health-human-physiology-ba", key: 1},
-      {label: "Sociology", value: "sociology-ba", key: 2}
+      {label: "Biochemistry", value: "biochemistry-bs", key: 2}
     ];
     let course_suggests = [
       {label: "Capstone Course in Sociology", value: "SOC:4910", key: 0},
