@@ -36,9 +36,14 @@
 
 /* Chart prompt container. All content should be centered horizontally */
 .promptRow {
-  height: 500px;
-  display: flex;
+  /*height: 500px;
+  display: flex;*/
   justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
 }
 
 /* Prompt text, 'Sorry it broke...' */
@@ -49,8 +54,16 @@
 /* Suggestion button prompts should be vertically aligned */
 .promptButtons {
   min-height: 350px;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  align-items: stretch;
+}
+.promptButtons > [class*='col-'] {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 /* Sankey Charting */
