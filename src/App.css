@@ -80,6 +80,10 @@
   stroke-opacity: 0.4;
 }
 
+/* Footer */
+.subnav {
+  color: #333333;
+}
 /* Signature */
 #signature {
   margin-top: 2px;

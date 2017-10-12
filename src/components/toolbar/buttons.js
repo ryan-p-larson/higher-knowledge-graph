@@ -25,9 +25,9 @@ export default class extends React.Component {
   createButton(d, active) {
     const style = (d) => {
       let view_style = {
-        'Department': 'btn-outline-warning',
-        'Major': 'btn-outline-success',
-        'Course': 'btn-outline-info'
+        'Department': 'btn-warning',
+        'Major': 'btn-success',
+        'Course': 'btn-info'
       };
       let btn_style = (d === active) ? view_style[d]+' active' : view_style[d];
       return  'btn ' + btn_style + ' viewBtn';
