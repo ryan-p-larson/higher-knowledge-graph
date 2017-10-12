@@ -15,14 +15,45 @@ import 'bootstrap/dist/css/bootstrap.css';
   * @returns Either a chart if data is valid, else a prompt of charts to choose.
   */
 export default class extends React.Component {
+  constructor (props, context) {
+    super(props, context);
+
+    this.state = {
+       width: 960,
+       height: 500
+    };
+    this.measure = this.measure.bind(this);
+  }
+
+  measure() {
+    this.setState({ 
+      height: this.divRef.clientHeight,
+      width: this.divRef.clientWidth
+    });
+  }
+
+  componentDidMount() {
+    this.measure();
+  }
+  componentWillMount () {
+    window.addEventListener('resize', this.measure, false);
+  }
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.measure, false);
+  }
+
   render() {
+    const {width, height} = this.state;
+
     return (
-        <div className="row">
+        <div ref={element => this.divRef = element} className="row">
           <div className="col-xs-12">
             {(this.props.links.length > 0) ?
               <Sankey
                 nodes={this.props.nodes}
                 links={this.props.links}
+                width={this.state.width}
+                height={this.state.height}
               />
               :
               <Prompt
