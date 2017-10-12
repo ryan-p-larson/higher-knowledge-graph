@@ -100,7 +100,10 @@ export default class extends React.Component {
         </div>
 
         <div className="col-xs-1">
-          <Clear clearCallback={this.state.callbacks.Clear}/>
+          <Clear
+            view={this.state.view}
+            clearCallback={this.state.callbacks.Clear}
+          />
         </div>
       </div>
     );

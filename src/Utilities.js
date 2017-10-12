@@ -86,7 +86,7 @@ export function setGraphState(graph) {
   * @returns Sets our React App's nodes and links to empty.
   */
 export function clearChartState() {
-  return this.setState({
+  this.setState({
     nodes: [],
     links: [],
     view: 'Load',
