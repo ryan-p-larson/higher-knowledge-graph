@@ -36,7 +36,6 @@
 
 /* Chart prompt container. All content should be centered horizontally */
 .promptRow {
-  /*height: 500px;*/
   justify-content: center;
   display: -webkit-box;
   display: -webkit-flex;
