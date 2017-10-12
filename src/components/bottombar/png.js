@@ -44,7 +44,7 @@ export default class extends React.Component {
     * @returns {string} css class for download button.
     */
   setStyle(active) {
-    let base_style = 'pull-right btn btn-secondary'
+    let base_style = 'pull-right btn btn-outline-secondary'
 
     // Loading/prompts don't display anything. Thus they're disabled
     if (active.slice(0, 6) === 'Select') return base_style + ' disabled';

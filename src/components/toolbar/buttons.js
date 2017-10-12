@@ -25,9 +25,9 @@ export default class extends React.Component {
   createButton(d, active) {
     const style = (d) => {
       let view_style = {
-        'Department': 'btn-warning',
-        'Major': 'btn-success',
-        'Course': 'btn-info'
+        'Department': 'btn-outline-warning',
+        'Major': 'btn-outline-success',
+        'Course': 'btn-outline-info'
       };
       let btn_style = (d === active) ? view_style[d]+' active' : view_style[d];
       return  'btn ' + btn_style + ' viewBtn';
@@ -40,7 +40,7 @@ export default class extends React.Component {
   render() {
     let buttons = ["Department", "Major", "Course"].map(d => this.createButton(d, this.props.active));
     return (
-        <div className="col-xs-4">
+        <div className="col-md-4 col-sm-12">
           <div className="btn-group text-center pull-left" role="group" aria-label="Data views">
             {buttons}
           </div>
