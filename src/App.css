@@ -36,8 +36,7 @@
 
 /* Chart prompt container. All content should be centered horizontally */
 .promptRow {
-  /*height: 500px;
-  display: flex;*/
+  /*height: 500px;*/
   justify-content: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -67,6 +66,9 @@
 }
 
 /* Sankey Charting */
+.sankeyChart {
+  min-height: 450px;
+}
 .node rect {
   shape-rendering: crispEdges;
 }
