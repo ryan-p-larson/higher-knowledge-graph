@@ -108,8 +108,8 @@ export default class extends React.Component {
     */
   createColumn(data, view) {
     return (
-      <div className="col-sm-4">
-        <h5 className="text-center"><b>{view}</b></h5>
+      <div className="col-4 text-center">
+        <h5><b>{view}</b></h5>
         <div className="list-group">
           { data.map(d => this.createButton(d, view)) }
         </div>
@@ -119,7 +119,7 @@ export default class extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      nextProps.view !== 'Load' ||
+      //nextProps.view !== 'Load' ||
       //nextProps.active !== 'Select an option from the dropdown.' ||
       this.state.active !== nextProps.active
     );
@@ -137,6 +137,7 @@ export default class extends React.Component {
     return (
         <div className="row promptRow">
             {(this.props.view !== 'Load') && this.createPrompt(this.props.active, this.props.view)}
+            <div></div>
             <div className="mt-auto p-2 promptButtons">
               {this.createColumn(dept_sample, 'Department')}
               {this.createColumn(maj_sample, 'Major')}

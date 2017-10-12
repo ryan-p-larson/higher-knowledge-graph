@@ -53,7 +53,7 @@ export default class extends React.Component {
 
   render() {
     return (
-        <div ref={element => this.divRef = element} className="row sankeyChart">
+        <div ref={element => this.divRef = element} className="row sankeyChart justify-content-center">
           <div className="col-xs-12">
             {(this.props.links.length > 0) ?
               <Sankey

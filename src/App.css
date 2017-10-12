@@ -40,12 +40,12 @@
 
 /* Chart prompt container. All content should be centered horizontally */
 .promptRow {
-  justify-content: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Prompt text, 'Sorry it broke...' */
@@ -56,7 +56,6 @@
 /* Suggestion button prompts should be vertically aligned */
 .promptButtons {
   min-height: 350px;
-  justify-content: around;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
