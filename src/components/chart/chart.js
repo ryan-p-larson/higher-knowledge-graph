@@ -15,14 +15,52 @@ import 'bootstrap/dist/css/bootstrap.css';
   * @returns Either a chart if data is valid, else a prompt of charts to choose.
   */
 export default class extends React.Component {
+  constructor (props, context) {
+    super(props, context);
+
+    this.state = {
+       width: 960,
+       height: 500
+    };
+    this.measure = this.measure.bind(this);
+  }
+
+  /**
+    * @method
+    * @description Set's the chart height/width state based on the parent div=row.
+    * @param {passive} ref - Parent row div needs to have a ref set.
+    * @returns Sets parent state dimensions.
+    */
+  measure() {
+    this.setState({ 
+      height: this.divRef.clientHeight,
+      width: this.divRef.clientWidth
+    });
+  }
+
+  componentDidMount() {
+    // Once our div mounts we should update it's dimensions
+    this.measure();
+  }
+  componentWillMount () {
+    // Add a listener to adjust on resize
+    window.addEventListener('resize', this.measure, false);
+  }
+  componentWillUnmount () {
+    // Get rid of our listener.
+    window.removeEventListener('resize', this.measure, false);
+  }
+
   render() {
     return (
-        <div className="row">
-          <div className="col-xs-12">
+        <div className="row sankeyChart">
+          <div ref={element => this.divRef = element} className="col-xs-12">
             {(this.props.links.length > 0) ?
               <Sankey
                 nodes={this.props.nodes}
                 links={this.props.links}
+                width={this.state.width}
+                height={this.state.height}
               />
               :
               <Prompt

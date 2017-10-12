@@ -91,7 +91,7 @@ export default class extends React.Component {
           handleButton={this.handleButton}
         />
 
-        <div className="col-xs-7">
+        <div className="col-md-7 col-xs-11">
           <Dropdown
             placeholder={dropdown_place}
             options={dropdown_options}

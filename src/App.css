@@ -1,3 +1,7 @@
+/* View buttons */
+.viewButtons {
+  margin-bottom: 10px;
+}
 /* Give buttons more room horizontally */
 .viewBtn {
   padding-left: 17px;
@@ -36,9 +40,12 @@
 
 /* Chart prompt container. All content should be centered horizontally */
 .promptRow {
-  height: 500px;
-  display: flex;
   justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
 }
 
 /* Prompt text, 'Sorry it broke...' */
@@ -49,11 +56,22 @@
 /* Suggestion button prompts should be vertically aligned */
 .promptButtons {
   min-height: 350px;
+  justify-content: around;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  align-items: stretch;
+}
+.promptButtons > [class*='col-'] {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 /* Sankey Charting */
+.sankeyChart {
+  min-height: 450px;
+}
 .node rect {
   shape-rendering: crispEdges;
 }
@@ -64,4 +82,14 @@
 .link:hover {
   cursor: pointer;
   stroke-opacity: 0.4;
+}
+
+/* Footer */
+.subnav {
+  color: #337ab7;
+}
+/* Signature */
+#signature {
+  margin-top: 15px;
+  margin-bottom: 5px;
 }

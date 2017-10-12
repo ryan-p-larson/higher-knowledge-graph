@@ -37,6 +37,10 @@ class SankeyGraph extends React.Component {
       return d;
     });
 
+    // Remove any duplicate links or nodes
+    graph.links = _.uniqBy(graph.links, d => d.id);
+    graph.nodes = _.uniqBy(graph.nodes, d => d.id);
+
     return graph;
   }
 
@@ -179,7 +183,7 @@ class SankeyGraph extends React.Component {
     .selectAll("g")
       .data(color.domain().slice())
       .enter().append("g")
-      .attr("transform", (d, i) => "translate(0," + (460 - (i*24)) + ")");
+      .attr("transform", (d, i) => "translate(0," + (350 - (i*24)) + ")");
 
     legend.append("rect")
       .attr("x", 960 - 35)

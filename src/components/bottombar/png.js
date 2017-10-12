@@ -44,7 +44,7 @@ export default class extends React.Component {
     * @returns {string} css class for download button.
     */
   setStyle(active) {
-    let base_style = 'pull-right btn btn-secondary'
+    let base_style = 'pull-right btn btn-outline-primary'
 
     // Loading/prompts don't display anything. Thus they're disabled
     if (active.slice(0, 6) === 'Select') return base_style + ' disabled';
@@ -55,13 +55,13 @@ export default class extends React.Component {
   render() {
     let active = this.props.active;
     return (
-        <div className="row">
-          <div className="col-xs-12">
-            <a onClick={() => this.onClick(active)} className={this.setStyle(active)}>
-              <span className="glyphicon glyphicon-cloud-download"></span> Download Image
-            </a>
-          </div>
-        </div>
+      <a 
+        className={this.setStyle(active)}
+        title="Click this button to download an image of the current chart."
+        onClick={() => this.onClick(active)}
+      >
+        <span className="glyphicon glyphicon-cloud-download"></span> Download Image
+      </a>
       );
   }
 }

@@ -1,5 +1,31 @@
 import React from 'react';
+import _ from 'lodash';
+
 import 'bootstrap/dist/css/bootstrap.css';
+
+var dept_suggests = [
+  {label: "Computer Science", value: "CS", key: 0},
+  {label: "Finance", value: "FIN", key: 1},
+  {label: "Psychology", value: "PSY", key: 2},
+  {label: "Criminology, Law & Justice", value: "CRIM", key: 3},
+  {label: "Health & Human Physiology", value: "HHP", key: 4},
+  {label: "Statistics", value: "STAT", key: 5}
+];
+var maj_suggests = [
+  {label: "Applied Physics", value: "applied-physics-bs", key: 0},
+  {label: "Health & Human Physiology", value: "health-human-physiology-ba", key: 1},
+  {label: "Biochemistry", value: "biochemistry-bs", key: 2},
+  {label: "Business Analytics & Information Systems BBA", value: "business-analytics-information-systems-bba", key: 3},
+  {label: "French", value: "french-ba", key: 4}
+];
+var course_suggests = [
+  {label: "Capstone Course in Sociology", value: "SOC:4910", key: 0},
+  {label: "Business Analytics Capstone", value: "MSCI:4150", key: 1},
+  {label: "Complex Variables", value: "MATH:4200", key: 2},
+  {label: "Survival Data Analysis", value: "STAT:7570", key: 3},
+  {label: "Trigonometry", value: "MATH:1010", key: 4},
+  {label: "Web Design", value: "JMC:3611", key: 5}
+];
 
 /**
   * @class
@@ -13,7 +39,8 @@ export default class extends React.Component {
     this.state = {
       "Department": props.deptCallback,
       "Major": props.majorCallback,
-      "Course": props.courseCallback
+      "Course": props.courseCallback,
+      "active": ''
     };
 
     // Bind functions
@@ -90,31 +117,30 @@ export default class extends React.Component {
     );
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.view !== 'Load' ||
+      //nextProps.active !== 'Select an option from the dropdown.' ||
+      this.state.active !== nextProps.active
+    );
+  }
+  componentDidUpdate(prevProps, prevState) {
+    this.setState({active: prevProps.active});
+  }
+
   render() {
     // Initialize the rendering suggestions
-    let dept_suggests = [
-      {label: "Computer Science", value: "CS", key: 0},
-      {label: "Finance", value: "FIN", key: 1},
-      {label: "Psychology", value: "PSY", key: 2}
-    ];
-    let maj_suggests = [
-      {label: "Applied Physics", value: "applied-physics-bs", key: 0},
-      {label: "Health & Human Physiology", value: "health-human-physiology-ba", key: 1},
-      {label: "Biochemistry", value: "biochemistry-bs", key: 2}
-    ];
-    let course_suggests = [
-      {label: "Capstone Course in Sociology", value: "SOC:4910", key: 0},
-      {label: "Business Analytics Capstone", value: "MSCI:4150", key: 1},
-      {label: "Complex Variables", value: "MATH:4200", key: 2}
-    ];
+    let dept_sample = _.sampleSize(dept_suggests, 3);
+    let maj_sample = _.sampleSize(maj_suggests, 3);
+    let course_sample = _.sampleSize(course_suggests, 3);
 
     return (
         <div className="row promptRow">
             {(this.props.view !== 'Load') && this.createPrompt(this.props.active, this.props.view)}
-            <div className="promptButtons mt-auto p-2">
-              {this.createColumn(dept_suggests, 'Department')}
-              {this.createColumn(maj_suggests, 'Major')}
-              {this.createColumn(course_suggests, 'Course')}
+            <div className="mt-auto p-2 promptButtons">
+              {this.createColumn(dept_sample, 'Department')}
+              {this.createColumn(maj_sample, 'Major')}
+              {this.createColumn(course_sample, 'Course')}
             </div>
         </div>
       );
