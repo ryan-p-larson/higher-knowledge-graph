@@ -91,7 +91,7 @@ export default class extends React.Component {
           handleButton={this.handleButton}
         />
 
-        <div className="col-md-7 col-xs-11">
+        <div className="col-sm-11 col-md-6 col-lg-7">
           <Dropdown
             placeholder={dropdown_place}
             options={dropdown_options}
@@ -99,7 +99,7 @@ export default class extends React.Component {
           />
         </div>
 
-        <div className="col-xs-1">
+        <div className="col-xs-1 offset-md-11 offset-lg-0 pull-right">
           <Clear
             view={this.state.view}
             clearCallback={this.state.callbacks.Clear}

@@ -24,7 +24,7 @@ export default class extends React.Component {
           title="Clear courses from chart."
           onClick={this.props.clearCallback}
         >
-          <span className="glyphicon glyphicon-remove-circle clearButton">Clear</span>
+          <span className="glyphicon glyphicon-remove-circle clearButton">X</span>
         </a>
       );
   }
