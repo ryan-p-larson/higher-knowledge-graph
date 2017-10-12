@@ -32,7 +32,7 @@ export default class extends React.Component {
     * @returns Sets parent state dimensions.
     */
   measure() {
-    this.setState({ 
+    this.setState({
       height: this.divRef.clientHeight,
       width: this.divRef.clientWidth
     });
@@ -53,8 +53,8 @@ export default class extends React.Component {
 
   render() {
     return (
-        <div className="row sankeyChart">
-          <div ref={element => this.divRef = element} className="col-xs-12">
+        <div ref={element => this.divRef = element} className="row sankeyChart">
+          <div className="col-xs-12">
             {(this.props.links.length > 0) ?
               <Sankey
                 nodes={this.props.nodes}
