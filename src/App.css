@@ -80,3 +80,8 @@
   cursor: pointer;
   stroke-opacity: 0.4;
 }
+
+/* Signature */
+#signature {
+  margin-top: 2px;
+}

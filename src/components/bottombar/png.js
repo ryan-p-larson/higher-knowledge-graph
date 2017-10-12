@@ -55,17 +55,13 @@ export default class extends React.Component {
   render() {
     let active = this.props.active;
     return (
-        <div className="row">
-          <div className="col-xs-12">
-            <a 
-              className={this.setStyle(active)}
-              title="Click this button to download an image of the current chart."
-              onClick={() => this.onClick(active)}
-            >
-              <span className="glyphicon glyphicon-cloud-download"></span> Download Image
-            </a>
-          </div>
-        </div>
+      <a 
+        className={this.setStyle(active)}
+        title="Click this button to download an image of the current chart."
+        onClick={() => this.onClick(active)}
+      >
+        <span className="glyphicon glyphicon-cloud-download"></span> Download Image
+      </a>
       );
   }
 }
