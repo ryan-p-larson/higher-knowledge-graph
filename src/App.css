@@ -40,14 +40,6 @@
 
 /* Chart prompt container. All content should be centered horizontally */
 .promptRow {
-<<<<<<< HEAD
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-  flex-wrap: wrap;
-=======
->>>>>>> 39f7e283836eb4dbbf1162a29ac9a47c6f09840e
   justify-content: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -64,10 +56,6 @@
 /* Suggestion button prompts should be vertically aligned */
 .promptButtons {
   min-height: 350px;
-<<<<<<< HEAD
-=======
-  justify-content: around;
->>>>>>> 39f7e283836eb4dbbf1162a29ac9a47c6f09840e
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -103,8 +91,4 @@
 #signature {
   margin-top: 15px;
   margin-bottom: 5px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 39f7e283836eb4dbbf1162a29ac9a47c6f09840e

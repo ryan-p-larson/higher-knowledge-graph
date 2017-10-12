@@ -32,11 +32,7 @@ export default class extends React.Component {
     * @returns Sets parent state dimensions.
     */
   measure() {
-<<<<<<< HEAD
     this.setState({
-=======
-    this.setState({ 
->>>>>>> 39f7e283836eb4dbbf1162a29ac9a47c6f09840e
       height: this.divRef.clientHeight,
       width: this.divRef.clientWidth
     });
@@ -57,31 +53,26 @@ export default class extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-        <div ref={element => this.divRef = element} className="row sankeyChart justify-content-center">
-          <div className="col-xs-12">
-=======
-        <div className="row sankeyChart">
-          <div ref={element => this.divRef = element} className="col-xs-12">
->>>>>>> 39f7e283836eb4dbbf1162a29ac9a47c6f09840e
-            {(this.props.links.length > 0) ?
-              <Sankey
-                nodes={this.props.nodes}
-                links={this.props.links}
-                width={this.state.width}
-                height={this.state.height}
-              />
-              :
-              <Prompt
-                active={this.props.active}
-                view={this.props.view}
-                courseCallback={this.props.courseCallback}
-                majorCallback={this.props.majorCallback}
-                deptCallback={this.props.deptCallback}
-              />
-            }
-          </div>
+      <div ref={element => this.divRef = element} className="row sankeyChart justify-content-center">
+        <div className="col-xs-12">
+          {(this.props.links.length > 0) ?
+            <Sankey
+              nodes={this.props.nodes}
+              links={this.props.links}
+              width={this.state.width}
+              height={this.state.height}
+            />
+            :
+            <Prompt
+              active={this.props.active}
+              view={this.props.view}
+              courseCallback={this.props.courseCallback}
+              majorCallback={this.props.majorCallback}
+              deptCallback={this.props.deptCallback}
+            />
+          }
         </div>
+      </div>
       );
   }
 }

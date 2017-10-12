@@ -21,21 +21,12 @@ export default class extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
         <a
           className={this.setStyle(this.props.view)}
           title="Clear courses from chart."
           onClick={this.props.clearCallback}
         >
           <Icon className="clearButton" name="close"/>
-=======
-        <a 
-          className="btn btn-default pull-right" 
-          title="Clear courses from chart." 
-          onClick={this.props.clearCallback}
-        >
-          <span className="glyphicon glyphicon-remove-circle clearButton"></span>
->>>>>>> 39f7e283836eb4dbbf1162a29ac9a47c6f09840e
         </a>
       );
   }
