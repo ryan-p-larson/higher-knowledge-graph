@@ -15,7 +15,7 @@ export default class extends React.Component {
 
         <nav>
           <ul className="nav nav-pills pull-right">
-            <li role="presentation"><a id="signature" className="navbar-text disabled">Made by Ryan Larson.</a></li>
+            <li role="presentation"><a id="signature" className="navbar-text disabled">Ryan Larson | 2017</a></li>
             <li role="presentation"><Png active={this.props.active} /></li>
           </ul>
         </nav>

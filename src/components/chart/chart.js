@@ -38,7 +38,6 @@ export default class extends React.Component {
     });
   }
 
-
   componentDidMount() {
     // Once our div mounts we should update it's dimensions
     this.measure();

@@ -39,7 +39,8 @@ export default class extends React.Component {
     this.state = {
       "Department": props.deptCallback,
       "Major": props.majorCallback,
-      "Course": props.courseCallback
+      "Course": props.courseCallback,
+      "active": ''
     };
 
     // Bind functions
@@ -114,6 +115,17 @@ export default class extends React.Component {
         </div>
       </div>
     );
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.view !== 'Load' ||
+      //nextProps.active !== 'Select an option from the dropdown.' ||
+      this.state.active !== nextProps.active
+    );
+  }
+  componentDidUpdate(prevProps, prevState) {
+    this.setState({active: prevProps.active});
   }
 
   render() {
