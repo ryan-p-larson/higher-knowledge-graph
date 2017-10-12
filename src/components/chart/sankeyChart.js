@@ -37,6 +37,10 @@ class SankeyGraph extends React.Component {
       return d;
     });
 
+    // Remove any duplicate links or nodes
+    graph.links = _.uniqBy(graph.links, d => d.id);
+    graph.nodes = _.uniqBy(graph.nodes, d => d.id);
+
     return graph;
   }
 
