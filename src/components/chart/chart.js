@@ -24,7 +24,7 @@ export default class extends React.Component {
     };
     this.measure = this.measure.bind(this);
   }
-
+  
   measure() {
     this.setState({ 
       height: this.divRef.clientHeight,
@@ -43,8 +43,6 @@ export default class extends React.Component {
   }
 
   render() {
-    const {width, height} = this.state;
-
     return (
         <div ref={element => this.divRef = element} className="row">
           <div className="col-xs-12">
