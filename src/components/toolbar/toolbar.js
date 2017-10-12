@@ -99,7 +99,7 @@ export default class extends React.Component {
           />
         </div>
 
-        <div className="col-xs-1 offset-md-11 offset-lg-0 pull-right">
+        <div className="col-xs-1 ml-md-auto ml-lg-0 pull-right">
           <Clear
             view={this.state.view}
             clearCallback={this.state.callbacks.Clear}

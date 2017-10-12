@@ -1,5 +1,6 @@
 import React            from 'react';
 import * as saveSvgAsPng from 'save-svg-as-png';
+import {Icon}            from 'react-fa';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -44,10 +45,10 @@ export default class extends React.Component {
     * @returns {string} css class for download button.
     */
   setStyle(active) {
-    let base_style = 'pull-right btn btn-outline-primary'
+    let base_style = 'nav-link'
 
     // Loading/prompts don't display anything. Thus they're disabled
-    if (active.slice(0, 6) === 'Select') return base_style + ' disabled';
+    if (active.slice(0, 6) === 'Select') return base_style + ' disabled text-muted';
     return base_style;
   }
 
@@ -55,12 +56,12 @@ export default class extends React.Component {
   render() {
     let active = this.props.active;
     return (
-      <a 
+      <a
         className={this.setStyle(active)}
         title="Click this button to download an image of the current chart."
         onClick={() => this.onClick(active)}
       >
-        <span className="glyphicon glyphicon-cloud-download"></span> Download Image
+        <Icon name="cloud-download"/> Download Image
       </a>
       );
   }

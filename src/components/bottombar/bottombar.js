@@ -7,15 +7,15 @@ export default class extends React.Component {
     return (
       <div className="subnav">
         <nav>
-          <ul className="nav nav-pills pull-left">
-            <li role="presentation"><a href="https://github.com/ryan-p-larson/higher-knowledge-graph">Github</a></li>
-            <li role="presentation"><a href="https://github.com/ryan-p-larson/hackathon">Data</a></li>
+          <ul className="nav pull-left">
+            <li className="nav-item"><a className="nav-link" href="https://github.com/ryan-p-larson/higher-knowledge-graph">Github</a></li>
+            <li className="nav-item"><a className="nav-link" href="https://github.com/ryan-p-larson/hackathon">Data</a></li>
           </ul>
         </nav>
 
         <nav>
-          <ul className="nav nav-pills pull-right">
-            <li role="presentation"><Png active={this.props.active} /></li>
+          <ul className="nav pull-right">
+            <li className="nav-item"><Png active={this.props.active} /></li>
           </ul>
         </nav>
 
