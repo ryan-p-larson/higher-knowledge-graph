@@ -55,7 +55,7 @@ export default class extends React.Component {
     return (
       <Select
         name="searchbar"
-        maxHeight={500}
+        maxHeight={300}
         optionHeight={30}
         options={this.props.options}
 
