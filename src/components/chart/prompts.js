@@ -137,7 +137,6 @@ export default class extends React.Component {
     return (
         <div className="row promptRow">
             {(this.props.view !== 'Load') && this.createPrompt(this.props.active, this.props.view)}
-            <div></div>
             <div className="mt-auto p-2 promptButtons">
               {this.createColumn(dept_sample, 'Department')}
               {this.createColumn(maj_sample, 'Major')}

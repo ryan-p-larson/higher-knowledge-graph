@@ -91,7 +91,11 @@ export default class extends React.Component {
           handleButton={this.handleButton}
         />
 
+<<<<<<< HEAD
         <div className="col-sm-11 col-md-6 col-lg-7">
+=======
+        <div className="col-md-7 col-xs-11">
+>>>>>>> 39f7e283836eb4dbbf1162a29ac9a47c6f09840e
           <Dropdown
             placeholder={dropdown_place}
             options={dropdown_options}
