@@ -183,7 +183,7 @@ class SankeyGraph extends React.Component {
     .selectAll("g")
       .data(color.domain().slice())
       .enter().append("g")
-      .attr("transform", (d, i) => "translate(0," + (460 - (i*24)) + ")");
+      .attr("transform", (d, i) => "translate(0," + (350 - (i*24)) + ")");
 
     legend.append("rect")
       .attr("x", 960 - 35)
