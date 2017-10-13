@@ -175,6 +175,10 @@ class SankeyGraph extends React.Component {
     * @returns Adds a legend to our svg object.
     */
   setLegend(color, svg) {
+    // Gather variables for programmatic legend placement
+    let width = this.props.width;
+    let height = this.props.height;
+
     let legend = svg.append("g")
       .attr("class", "legend")
       .attr("font-family", "sans-serif")
@@ -183,16 +187,16 @@ class SankeyGraph extends React.Component {
     .selectAll("g")
       .data(color.domain().slice())
       .enter().append("g")
-      .attr("transform", (d, i) => "translate(0," + (350 - (i*24)) + ")");
+      .attr("transform", (d, i) => "translate(0," + (height - 40 - (i*24)) + ")");
 
     legend.append("rect")
-      .attr("x", 960 - 35)
+      .attr("x", width - 35)
       .attr("width", 20)
       .attr("height", 20)
       .attr("fill", d => color(d));
 
     legend.append("text")
-      .attr("x", 960 - 40)
+      .attr("x", width - 40)
       .attr("y", 9.5)
       .attr("dy", "0.32em")
       .text(d => d);
