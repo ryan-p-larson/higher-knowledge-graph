@@ -1,7 +1,6 @@
-import React          from 'react';
+import React         from 'react';
 import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-import Dropdown   from '../toolbar/dropdown';
+import Modal         from 'react-modal';
 
 const customStyles = {
   content : {
@@ -10,66 +9,54 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    minWidth: '25%',
+    maxWidth: '50%'
   }
 };
 
 export default class extends React.Component {
-  constructor(props) {
-    super();
-
-    this.state = {
-      modalIsOpen: false,
-      addCallback: props.addCallback
-    };
-
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-  }
-
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#000';
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
-  }
-
-  componentWillReceiveProps(props) {
-    this.setState({
-      dropdowns: {
-        "Department": props.department_dropdown_options,
-        "Major": props.major_dropdown_options,
-        "Course": props.course_dropdown_options,
-        "addCallback": props.addCallback
-      }
-    });
-  }
-
   render() {
+    // Gather data for the popup
+    let data = this.props.modalData;
+    let courseID = data['id'];
+    let name = data['name'];
+    let deptartment = data['deptartment'];
+    let hours = data['hours'];
+    let href = data['href'];
+    let description = data['description'];
+
     return (
       <div>
-        <a className="btn btn-default" title="Clear courses from chart." onClick={this.openModal}>
-          <span className="glyphicon glyphicon-plus addCourseButton"></span>
-        </a>
-
         <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
+          isOpen={this.props.isOpen}
+          onRequestClose={this.props.toggleModal}
           style={customStyles}
-          contentLabel="Add Course Form"
+          contentLabel="View Course Details"
         >
 
-          <h2 ref={subtitle => this.subtitle = subtitle}>Add Course</h2>
-          <button onClick={this.closeModal}>close</button>
+          <div>
+            <div className="row">
+              <div className="col-10">
+                <h4 ref={subtitle => this.subtitle = subtitle}>Course Details</h4>
+              </div>
+              <div className="col-2 pull-right">
+                <button onClick={this.props.toggleModal}>close</button>
+              </div>
+            </div>
 
+            <div className="row">
+              <div className="col-12">
+                <p><b>Name:  </b>{name}</p>
+                <p><b>CourseID:  </b>{courseID}</p>
+                <p><b>Department:  </b>{deptartment}</p>
+                <p><b>Hours:  </b>{hours}</p>
+                <p><b>Description:  </b>{description}</p>
+                <p><a href={href}>Link to course page</a></p>
+              </div>
+            </div>
+
+          </div>
         </Modal>
       </div>
     );

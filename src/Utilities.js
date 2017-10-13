@@ -192,3 +192,16 @@ export function courseCallback(event) {
     console.log(event);
   }
 }
+
+/**
+  * @method
+  * @description Function to open a modal and populate it with a course's information.
+  * @param {object} d - Course object passed via D3 in our chart.
+  * @returns Opened modal, filled with information.
+  */
+export function modalCallback(d) {
+  // Set the information
+  this.setState({modalData: d});
+  // Open the modal
+  this.toggleModal();
+}

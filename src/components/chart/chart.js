@@ -61,6 +61,7 @@ export default class extends React.Component {
               links={this.props.links}
               width={this.state.width}
               height={this.state.height}
+              modalCallback={this.props.modalCallback}
             />
             :
             <Prompt

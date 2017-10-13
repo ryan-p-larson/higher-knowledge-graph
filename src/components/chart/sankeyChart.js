@@ -106,7 +106,6 @@ class SankeyGraph extends React.Component {
     let color = chart_obj.color_scale;
     let svg = chart_obj.svg;
 
-
     // ========================================================================
     // Add links
     // ========================================================================
@@ -150,7 +149,8 @@ class SankeyGraph extends React.Component {
       .attr("height", function(d) { return d.y1 - d.y0; })
       .attr("width", function(d) { return d.x1 - d.x0; })
       .attr("fill", function(d) { return color(d.department); })
-      .attr("stroke", "#333");
+      .attr("stroke", "#333")
+      .on("click", (d) => this.props.modalCallback(d));
     // add nodes text
     node.append("text")
       .attr("x", function(d) { return d.x0 - 6; })

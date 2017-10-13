@@ -2,11 +2,12 @@ import React            from 'react';
 
 import { loadAllData, setChartTitle }  from './Utilities';
 import { setGraphState, clearChartState } from './Utilities';
-import { courseCallback, majorCallback, deptCallback } from './Utilities';
+import { courseCallback, majorCallback, deptCallback , modalCallback} from './Utilities';
 
 import Toolbar          from './components/toolbar/toolbar';
 import Chart              from './components/chart/chart';
 import Bottombar     from './components/bottombar/bottombar';
+import Modal            from './components/chart/modal';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -29,7 +30,9 @@ class App extends React.Component {
 
       nodes: [],
       links: [],
-      curriculum: []
+      
+      isOpen: false,
+      modalData: {}
     };
 
     // Bind functions
@@ -41,14 +44,26 @@ class App extends React.Component {
     this.courseCallback = courseCallback.bind(this);
     this.deptCallback = deptCallback.bind(this);
     this.clearCallback = clearChartState.bind(this);
-  }
 
+    // Modal functions
+    this.modalCallback = modalCallback.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+  }
 
   /**
     * @description On mounting, load all data and set our state.
     * @returns Our Component's state will be initialized.
   */
   componentWillMount() { loadAllData(data => this.setState(data)); }
+
+  // Modal Stuff
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
+
 
   render() {
     return (
@@ -82,11 +97,18 @@ class App extends React.Component {
           courseCallback={this.courseCallback}
           majorCallback={this.majorCallback}
           deptCallback={this.deptCallback}
+          modalCallback={this.modalCallback}
         />
 
         <hr className="chartHR"/>
 
         <Bottombar active={this.state.active}/>
+
+        <Modal
+          isOpen={this.state.isOpen}
+          toggleModal={this.toggleModal}
+          modalData={this.state.modalData}
+        />
 
       </div>
     );
