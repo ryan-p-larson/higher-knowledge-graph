@@ -1,6 +1,7 @@
 import React         from 'react';
 import ReactDOM from 'react-dom';
 import Modal         from 'react-modal';
+import {Icon}       from 'react-fa';
 
 const customStyles = {
   content : {
@@ -41,7 +42,9 @@ export default class extends React.Component {
                 <h4 ref={subtitle => this.subtitle = subtitle}>Course Details</h4>
               </div>
               <div className="col-2 pull-right">
-                <button onClick={this.props.toggleModal}>close</button>
+                <button onClick={this.props.toggleModal}>
+                  <Icon name="close"/>
+                </button>
               </div>
             </div>
 
