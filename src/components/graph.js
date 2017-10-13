@@ -122,17 +122,19 @@ sigma.classes.graph.addMethod('createSubgraphFromSearch', function(nodeID, depth
 
 /**
   @method
-  * @description Helper function to create a slimmed down node for SigmaJS.
+  * @description Helper function to create a node for SigmaJS.
   * @param {object} d - Node object from our indexed-courses.json
-  * @returns {object} Slimmed down node object for our Knowledge Graph
+  * @returns {object} Node object for our Knowledge Graph
 */
 const createNode = (d) => {
   return {
     id: d.courseID,
-    hours: d.hours,
+    name: d.name,
     course_num: d.course_num,
+    hours: d.hours,
     department: d.department,
-    name: d.name
+    description: d.description,
+    href: d.href
   }
 }
 
