@@ -5,14 +5,14 @@ import {Icon}       from 'react-fa';
 
 const customStyles = {
   content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
-    minWidth: '25%',
-    maxWidth: '50%'
+    top:               '50%',
+    left:               '50%',
+    right:             'auto',
+    bottom:         'auto',
+    marginRight: '-50%',
+    transform:     'translate(-50%, -50%)',
+    minWidth:     '25%',
+    maxWidth:    '50%'
   }
 };
 
@@ -22,7 +22,7 @@ export default class extends React.Component {
     let data = this.props.modalData;
     let courseID = data['id'];
     let name = data['name'];
-    let deptartment = data['deptartment'];
+    let department = data['department'];
     let hours = data['hours'];
     let href = data['href'];
     let description = data['description'];
@@ -51,10 +51,10 @@ export default class extends React.Component {
             <div className="row">
               <div className="col-12">
                 <p><b>Name:  </b>{name}</p>
+                <p><b>Department:  </b>{department}</p>
                 <p><b>CourseID:  </b>{courseID}</p>
-                <p><b>Department:  </b>{deptartment}</p>
                 <p><b>Hours:  </b>{hours}</p>
-                <p><b>Description:  </b>{description}</p>
+                {(description !== undefined) && <p><b>Description:  </b>{description}</p>}
                 <p><a href={href}>Link to course page</a></p>
               </div>
             </div>
