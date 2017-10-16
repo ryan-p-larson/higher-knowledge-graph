@@ -13,6 +13,14 @@
 - [React](https://reactjs.org/) and [React-Faux-DOM](https://github.com/Olical/react-faux-dom) for the user interface.
 - [Bootstrap v4.0](https://getbootstrap.com) and [React-fa](https://github.com/andreypopp/react-fa) for formatting and icons, respectively. 
 
+**Features:**
+- Department, Major, and Course views for data.
+- Automatic resizing, layout, and legend for chart.
+- Autofill search bars.
+- Download PNG button.
+- Clear chart button.
+- Randomly selected data views.
+
 ### Installation
 
 **Prerequisites**: You will need Node and NPM installed to run the website.
@@ -93,3 +101,8 @@ Forewarning; All of the data in the application *has been scraped*. Because the 
     ]
   }
 ```
+
+**Data wish list:**
+- All courses, all departments, all majors. The scrape did not pick all of the data up.
+- Course prerequisite links with link type. This would deal with taking `MATH:1001 OR MATH:1002` at parse time.
+- An editor mode to build your own curriculum. 
