@@ -1,6 +1,5 @@
 import React         from 'react';
-import ReactDOM from 'react-dom';
-import Modal         from 'react-modal';
+import Modal        from 'react-modal';
 import {Icon}       from 'react-fa';
 
 const customStyles = {
@@ -55,7 +54,7 @@ export default class extends React.Component {
                 <p><b>CourseID:  </b>{courseID}</p>
                 <p><b>Hours:  </b>{hours}</p>
                 {(description !== undefined) && <p><b>Description:  </b>{description}</p>}
-                <p><a href={href}>Link to course page</a></p>
+                <p><a target="_blank" href={href}>Link to course page</a></p>
               </div>
             </div>
 
