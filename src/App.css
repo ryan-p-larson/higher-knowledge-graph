@@ -2,10 +2,15 @@
 .viewButtons {
   margin-bottom: 10px;
 }
-/* Give buttons more room horizontally */
+/* Give buttons more room horizontally, with white text */
 .viewBtn {
   padding-left: 17px;
   padding-right: 17px;
+  color: #fff;
+}
+/* Make active view dark text */
+.active.viewBtn {
+  color: #333;
 }
 
 /* Style dropdown menus */
