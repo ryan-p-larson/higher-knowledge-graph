@@ -1,11 +1,10 @@
 # Higher Knowledge Graph
 
-<p align="center">
-	![Example application interface](media/splash.png)
-</p>
+![Screenplay of application interaction.](media/splash.gif)
 
 ### About
 
+*Higher Knowledge Graph* is an web application to explore University of Iowa inter-course relationships. As an undergrad I always wondered what I could take, or what different majors learned about. This motivated me to create a graph exploration tool based on my University's courses. The goal of this application is to satisfy student's curiousity by engaging their interests. 
 
 **Used Packages:**
 - [D3.js](https://github.com/d3/d3) for the visualization.
@@ -14,9 +13,26 @@
 - [React](https://reactjs.org/) and [React-Faux-DOM](https://github.com/Olical/react-faux-dom) for the user interface.
 - [Bootstrap v4.0](https://getbootstrap.com) and [React-fa](https://github.com/andreypopp/react-fa) for formatting and icons, respectively. 
 
+### Installation
+
+**Prerequisites**: You will need Node and NPM installed to run the website.
+
+1. Clone this repository: `git clone https://github.com/ryan-p-larson/higher-knowledge-graph.git`
+2. Change directory to the new folder: `cd higher-knowledge-graph` 
+3. Install the neccesary packages: `npm install`
+4. Run the server: `npm start`
+
+### Inspiration
+
+Like everything else, this [is a remix.](http://www.everythingisaremix.info/) I'd like to principally thank Nick Balestra for his [React Sankey app](https://github.com/nickbalestra/sankey), his work served as a foundation for this project. In addition I drew from the following sources:
+- [Existing.](media/pacific-university-mathematics-chart.JPG) [College.](media/cornell-university-compsci-chart.JPG) [Course.](media/georgefox-engineering-chart.JPG) [Charts.](media/nmt-compsci-chart.JPG)
+- [Semnatic Networks](https://en.wikipedia.org/wiki/Semantic_network)
+- [Directed Graphs, from Princeton](http://algs4.cs.princeton.edu/42digraph/)
+- [Graph Traversals](https://en.wikipedia.org/wiki/Graph_traversal)
+
 ### Data
 
-Forewarning; All of the data in the application *has been scraped*. Because the University of Iowa didn't respond favorably to my data requests, I scraped the best I could using Python and Scrapy. You can see the work in the related [data repo](https://github.com/ryan-p-larson/hackathon).
+Forewarning; All of the data in the application *has been scraped*. Because the University of Iowa didn't respond favorably to my data requests, I scraped the best I could using Python and Scrapy.  The data in the application should not be used beyond this application's scope. You can see my work in the related [data repo](https://github.com/ryan-p-larson/hackathon).
 
 **Courses**:
 ```
@@ -77,20 +93,3 @@ Forewarning; All of the data in the application *has been scraped*. Because the 
     ]
   }
 ```
-
-### Installation
-
-**Prerequisites**: You will need Node and NPM installed to run the website.
-
-1. Clone this repository: `git clone https://github.com/ryan-p-larson/higher-knowledge-graph.git`
-2. Change directory to the new folder: `cd higher-knowledge-graph` 
-3. Install the neccesary packages: `npm install`
-4. Run the server: `npm start`
-
-### Inspiration
-
-Like everything else, this [is a remix.](http://www.everythingisaremix.info/) I'd like to principally thank Nick Balestra for his [React Sankey app](https://github.com/nickbalestra/sankey), his work served as a foundation for this project. In addition I drew from the following sources:
-- [Existing.](media/pacific-university-mathematics-chart.JPG) [College.](media/cornell-university-compsci-chart.JPG) [Course.](media/georgefox-engineering-chart.JPG) [Charts.](media/nmt-compsci-chart.JPG)
-- [Semnatic Networks](https://en.wikipedia.org/wiki/Semantic_network)
-- [Directed Graphs, from Princeton](http://algs4.cs.princeton.edu/42digraph/)
-- [Graph Traversals](https://en.wikipedia.org/wiki/Graph_traversal)
