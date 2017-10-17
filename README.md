@@ -18,6 +18,7 @@ The '*Knowledge Graph*' is made up of courses (nodes), and their prerequisite re
 **Features:**
 - Department, Major, and Course views for data.
 - Automatic resizing, layout, and legend for chart.
+- Modal popup for each course (*not shown*)
 - Autofill search bars.
 - Download PNG button.
 - Clear chart button.

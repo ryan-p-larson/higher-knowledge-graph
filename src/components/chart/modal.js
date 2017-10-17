@@ -11,7 +11,8 @@ const customStyles = {
     marginRight: '-50%',
     transform:     'translate(-50%, -50%)',
     minWidth:     '25%',
-    maxWidth:    '50%'
+    maxWidth:    '50%',
+    boxShadow:    '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)'
   }
 };
 
