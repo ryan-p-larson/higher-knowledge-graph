@@ -4,14 +4,16 @@
 
 ### About
 
-*Higher Knowledge Graph* is an web application to explore University of Iowa inter-course relationships. As an undergrad I always wondered what I could take, or what different majors learned about. This motivated me to create a graph exploration tool based on my University's courses. The goal of this application is to satisfy student's curiousity by engaging their interests. 
+*Higher Knowledge Graph* is an web application to explore courses at the University of Iowa and their relationships. As an undergrad I always wondered what classes I could take, or what different majors learned about. This motivated me to create a graph exploration tool based on my University's courses. The goal of this application is to satisfy student's curiosity by engaging their interests.
+
+The '*Knowledge Graph*' is made up of courses (nodes), and their prerequisite requirements (links). Each node is a course at the University scraped from the U. Iowa Registrar. You can read more about the data at the bottom of this page, or see the demo [here](https://ryan-p-larson.github.io/higher-knowledge-graph).  
 
 **Used Packages:**
 - [D3.js](https://github.com/d3/d3) for the visualization.
 - [Sigma.js](https://github.com/jacomyal/sigma.js/) for the graph manipulation.
-- [Lodash](https://github.com/lodash/lodash) for synatatic sugar while manipulating data.
+- [Lodash](https://github.com/lodash/lodash) for syntactic sugar while manipulating data.
 - [React](https://reactjs.org/) and [React-Faux-DOM](https://github.com/Olical/react-faux-dom) for the user interface.
-- [Bootstrap v4.0](https://getbootstrap.com) and [React-fa](https://github.com/andreypopp/react-fa) for formatting and icons, respectively. 
+- [Bootstrap v4.0](https://getbootstrap.com) and [React-fa](https://github.com/andreypopp/react-fa) for formatting and icons, respectively.
 
 **Features:**
 - Department, Major, and Course views for data.
@@ -26,8 +28,8 @@
 **Prerequisites**: You will need Node and NPM installed to run the website.
 
 1. Clone this repository: `git clone https://github.com/ryan-p-larson/higher-knowledge-graph.git`
-2. Change directory to the new folder: `cd higher-knowledge-graph` 
-3. Install the neccesary packages: `npm install`
+2. Change directory to the new folder: `cd higher-knowledge-graph`
+3. Install the necessary packages: `npm install`
 4. Run the server: `npm start`
 
 ### Inspiration
@@ -105,4 +107,4 @@ Forewarning; All of the data in the application *has been scraped*. Because the 
 **Data wish list:**
 - All courses, all departments, all majors. The scrape did not pick all of the data up.
 - Course prerequisite links with link type. This would deal with taking `MATH:1001 OR MATH:1002` at parse time.
-- An editor mode to build your own curriculum. 
+- An editor mode to build your own curriculum.
